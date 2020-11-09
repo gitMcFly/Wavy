@@ -115,14 +115,20 @@ public extension RadioStation {
 
 //
 
-extension RadioStation: CustomStringConvertible {
-    @SingleResult public var description: String {
+extension RadioStation {
+    @SingleResult public var formattedTitle: String {
         switch title {
         case .callLetters:
             "\(callLetters) \(frequency)"
             
         case .prefix(let title):
-            "\(title) \(frequency)"
+            if let joinedPrefix = title.droppingSuffix("-") {
+                joinedPrefix + frequency.description
+                
+            } else {
+                "\(title) \(frequency)"
+                
+            }
             
         case .suffix(let title):
             "\(frequency) \(title)"
