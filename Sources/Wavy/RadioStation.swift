@@ -10,6 +10,7 @@ import unstandard
 
 public struct RadioStation {
     internal struct Properties {
+        var ignoreFrequencyInTitle = false
         var ignoreMarketInTitle = false
         
     }
@@ -110,6 +111,12 @@ public extension RadioStation {
         return new
     }
     
+    func ignoreFrequencyInTitle() -> Self {
+        var new = self
+        new.properties.ignoreFrequencyInTitle = true
+        return new
+    }
+    
 }
 
 
@@ -118,6 +125,9 @@ public extension RadioStation {
 extension RadioStation {
     @SingleResult public var formattedTitle: String {
         switch title {
+        case _ where properties.ignoreFrequencyInTitle:
+            title.text ?? callLetters
+            
         case .callLetters:
             "\(callLetters) \(frequency)"
             
@@ -172,6 +182,20 @@ extension RadioStation.Title {
         case .suffix:
             return .suffix(newText)
             
+        }
+    }
+    
+    fileprivate var text: String? {
+        switch self {
+        case .callLetters:
+            return nil
+        
+        case let .prefix(text):
+            return text
+        
+        case let .suffix(text):
+            return text
+        
         }
     }
     
