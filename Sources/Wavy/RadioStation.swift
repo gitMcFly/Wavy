@@ -1,0 +1,172 @@
+//
+//  RadioStation.swift
+//
+//
+//  Created by Christopher Weems on 11/9/20.
+//
+
+import Foundation
+import unstandard
+
+public struct RadioStation {
+    internal struct Properties {
+        var ignoreMarketInTitle = false
+        
+    }
+    
+    internal var properties = Properties()
+    
+    public let callLetters: String
+    
+    var title: Title
+    var slogan: String? = nil
+    
+    public private(set) var webURL: WebURL?
+    
+    let frequency: Frequency
+    
+    public private(set) var market: Market?
+    var cityName: String? = nil
+    
+    
+    // MARK: - Initializers
+    
+    public init(_ callLetters: String, _ titlePrefix: String, _ frequency: Frequency, market: Market? = nil) {
+        self.callLetters = callLetters.uppercased()
+        self.title = .prefix(titlePrefix)
+        self.frequency = frequency
+        self.market = market
+        
+    }
+    
+    public init(_ callLetters: String, _ frequency: Frequency, _ titleSuffix: String, market: Market? = nil) {
+        self.callLetters = callLetters.uppercased()
+        self.title = .suffix(titleSuffix)
+        self.frequency = frequency
+        self.market = market
+        
+    }
+    
+    public init(_ callLetters: String, _ frequency: Frequency, market: Market? = nil) {
+        self.callLetters = callLetters.uppercased()
+        self.title = .callLetters
+        self.frequency = frequency
+        self.market = market
+        
+    }
+    
+}
+
+
+// MARK: - Property Setters
+
+public extension RadioStation {
+    func broadcastCity(_ cityName: String) -> Self {
+        var new = self
+        new.cityName = cityName
+        return new
+    }
+    
+    func temporaryTitle(_ title: String, through endDate: (day: Int, month: Int, year: Int)) -> Self {
+        var new = self
+        
+        let endDateComponents = DateComponents(calendar: .gregorian,
+                                               year: endDate.year,
+                                               month: endDate.month,
+                                               day: endDate.day)
+        
+        if let date = endDateComponents.date, .now() < date {
+            new.title = new.title.replacingText(with: title)
+            
+        } else {
+            assertionFailure("Temporary title no longer valid: \(title)")
+            
+        }
+        
+        return new
+    }
+    
+    func slogan(_ slogan: String) -> Self {
+        var new = self
+        new.slogan = slogan
+        return new
+    }
+    
+    func url(authority: String, useHTTPS: Bool = true) -> Self {
+        var new = self
+        new.webURL = .authority(authority, useHTTPS: useHTTPS)
+        return new
+    }
+    
+    func url(_ webPage: String) -> Self {
+        var new = self
+        new.webURL = .page(webPage)
+        return new
+    }
+    
+    func ignoreBroadcastCityInTitle() -> Self {
+        var new = self
+        new.properties.ignoreMarketInTitle = true
+        return new
+    }
+    
+}
+
+
+//
+
+extension RadioStation: CustomStringConvertible {
+    @SingleResult public var description: String {
+        switch title {
+        case .callLetters:
+            "\(callLetters) \(frequency)"
+            
+        case .prefix(let title):
+            "\(title) \(frequency)"
+            
+        case .suffix(let title):
+            "\(frequency) \(title)"
+            
+        }
+    }
+    
+}
+
+
+// MARK -
+
+public extension RadioStation {
+    enum Title {
+        case prefix(_ title: String) // ex. "Star 102.1"
+        case suffix(_ title: String) // ex. "105.5 The River"
+        case callLetters
+        
+    }
+        
+}
+
+extension RadioStation {
+    public enum WebURL {
+        case authority(_ authority: String, useHTTPS: Bool) // ex. "kuow.org"
+        case page(_ webPage: String)        // ex. "https://www.etsu.edu/wets/"
+        
+    }
+    
+}
+
+extension RadioStation.Title {
+    func replacingText(with newText: String) -> Self {
+        switch self {
+        case .callLetters:
+            fatalError()
+            
+        case .prefix:
+            return .prefix(newText)
+            
+        case .suffix:
+            return .suffix(newText)
+            
+        }
+    }
+    
+}

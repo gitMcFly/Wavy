@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "unstandard",
+        "repositoryURL": "https://github.com/christopherweems/unstandard.git",
+        "state": {
+          "branch": "main",
+          "revision": "a5aaeb7298e0c7858ebc766acf8aa363b65fbded",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
