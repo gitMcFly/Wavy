@@ -10,7 +10,11 @@ import Foundation
 // soon to be replaced by a struct
 public enum Market: String {
     // alabama
+    case birmingham
     case troyAL
+    
+    // massachusetts
+    case boston
     
     // pennsylvania
     case philadelphia
