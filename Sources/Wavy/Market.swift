@@ -11,6 +11,7 @@ import Foundation
 public enum Market: String {
     // alabama
     case birmingham
+    case huntsville
     case troyAL
     
     // massachusetts
