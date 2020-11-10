@@ -22,7 +22,7 @@ internal extension Market {
     var stationGroup: StationGroup {
         switch self {
         case .boston:
-            return Boston()
+            return Massachusetts.Boston()
         
         case .chattanooga:
             return Tennessee.Chattanooga()
@@ -31,10 +31,10 @@ internal extension Market {
             return Tennessee.Knoxville()
             
         case .philadelphia:
-            return Philadelphia()
+            return Pennsylvania.Philadelphia()
             
         case .seattle:
-            return Seattle()
+            return Washington.Seattle()
             
         case .triCitiesTN:
             return Tennessee.TriCities()

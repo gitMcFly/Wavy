@@ -7,11 +7,14 @@
 
 import Foundation
 
-struct Seattle: _StationGroup {
-    var stations: Set<Station> {
-        Station("KUOW", .fm(94, 9))
-            .url(authority: "kuow.org")
+extension Washington {
+    struct Seattle: _StationGroup {
+        var stations: Set<Station> {
+            Station("KUOW", .fm(94, 9))
+                .url(authority: "kuow.org")
+            
+        }
         
     }
-    
+
 }
