@@ -7,57 +7,50 @@
 
 import Foundation
 
-public struct Market: Hashable {
-    fileprivate let id: String
+public enum Market: String, Hashable, CaseIterable {
+    // alabama
+    case birmingham
+    case huntsville
+    case troyAL
     
-    init(id: String) {
-        self.id = id
-    }
+    // massachusetts
+    case boston
+    
+    // pennsylvania
+    case philadelphia
+    
+    // tennessee
+    case chattanooga
+    case collegedale
+    case knoxville
+    case triCitiesTN
+    
+    // virginia
+    case lebanonVA
+    
+    // washington
+    case seattle
     
 }
 
-extension Market {
-    // alabama
-    public static let birmingham = Market(id: "birmingham")
-    public static let huntsville = Market(id: "huntsville")
-    public static let troyAL = Market(id: "troyAL")
-    
-    // massachusetts
-    public static let boston = Market(id: "boston")
-    
-    // pennsylvania
-    public static let philadelphia = Market(id: "philadelphia")
-    
-    // tennessee
-    public static let chattanooga = Market(id: "chattanooga")
-    public static let collegedale = Market(id: "collegedale")
-    public static let knoxville = Market(id: "knoxville")
-    public static let triCitiesTN = Market(id: "triCitiesTN")
-    
-    // virginia
-    public static let lebanonVA = Market(id: "lebanonVA")
-    
-    // washington
-    public static let seattle = Market(id: "seattle")
-    
-}
 
 extension Market: CustomStringConvertible {
     public var description: String {
+        let descriptionTitle: Substring
+        
         switch self {
-        case .lebanonVA:
-            return "Lebanon"
-            
         case .triCitiesTN:
             return "Tri-Cities"
             
-        case .troyAL:
-            return "Troy"
+        case _ where rawValue.suffix(2).allSatisfy(\.isUppercase):
+            descriptionTitle = rawValue.prefix(upTo: rawValue.index(rawValue.endIndex, offsetBy: -2))
             
         default:
-            return id.capitalized
+            descriptionTitle = Substring(rawValue)
             
         }
+        
+        return descriptionTitle.capitalized
     }
     
 }
