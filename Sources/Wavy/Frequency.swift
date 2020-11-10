@@ -15,13 +15,44 @@ public enum Frequency: Hashable {
 }
 
 extension Frequency: CustomStringConvertible {
-    @SingleResult public var description: String {
-        switch self {
-        case .am(let khz):
-            "\(khz) AM"
+    public var description: String {
+        description(frequencyDesignatorPosition: .following)
+    }
+    
+}
+ 
+extension Frequency {    
+    @SingleResult public func description(frequencyDesignatorPosition: DisplayPosition) -> String {
+        switch frequencyDesignatorPosition {
+        case .preceeding:
+            "\(technologyDesignator) \(frequencyNumber)"
             
-        case let .fm(mhz, dmhz):
-            "\(mhz).\(dmhz) FM"
+        case .following:
+            "\(frequencyNumber) \(technologyDesignator)"
+            
+        case .hidden:
+            frequencyNumber
+            
+        }
+    }
+    
+}
+
+extension Frequency {
+    @SingleResult var technologyDesignator: String {
+        switch self {
+        case .fm: "FM"
+        case .am: "AM"
+        }
+    }
+    
+    @SingleResult var frequencyNumber: String {
+        switch self {
+        case let .fm(mhz, dMHz):
+            "\(mhz).\(dMHz)"
+            
+        case let .am(khz):
+            "\(khz)"
             
         }
     }
