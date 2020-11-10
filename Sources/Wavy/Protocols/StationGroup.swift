@@ -11,3 +11,8 @@ public protocol StationGroup {
     var stations: Set<RadioStation> { get }
     
 }
+
+public extension StationGroup {
+    typealias Station = RadioStation
+    
+}
