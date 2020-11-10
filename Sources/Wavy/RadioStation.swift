@@ -24,6 +24,9 @@ public struct RadioStation: Hashable {
     var title: Title
     var slogan: String? = nil
     
+    public internal(set) var networkAffiliations = Set<Network>()
+    public internal(set) var owners = Set<Broadcaster>()
+    
     public private(set) var webURL: WebURL?
     
     let frequency: Frequency
@@ -64,9 +67,15 @@ public struct RadioStation: Hashable {
 // MARK: - Property Setters
 
 public extension RadioStation {
-    func market(_ market: Market) -> Self {
+    func title(_ title: String) -> Self {
         var new = self
-        new.market = market
+        new.title = new.title.replacingText(with: title)
+        return new
+    }
+    
+    func slogan(_ slogan: String) -> Self {
+        var new = self
+        new.slogan = slogan
         return new
     }
     
@@ -76,12 +85,51 @@ public extension RadioStation {
         return new
     }
     
-    func title(_ title: String) -> Self {
+    func ignoreBroadcastCityInTitle() -> Self {
         var new = self
-        new.title = new.title.replacingText(with: title)
+        new.properties.ignoreMarketInTitle = true
         return new
     }
     
+    func ignoreFrequencyInTitle() -> Self {
+        var new = self
+        new.properties.ignoreFrequencyInTitle = true
+        return new
+    }
+        
+    func callLettersFollowFrequency() -> Self {
+        var new = self
+        new.properties.callLettersFollowFrequency = true
+        return new
+    }
+        
+    func frequencyDesignator(position: DisplayPosition) -> Self {
+        var new = self
+        new.properties.frequencyDesignatorPosition = position
+        return new
+    }
+    
+    func market(_ market: Market) -> Self {
+        var new = self
+        new.market = market
+        return new
+    }
+    
+    func url(authority: String, useHTTPS: Bool = true) -> Self {
+        var new = self
+        new.webURL = .authority(authority, useHTTPS: useHTTPS)
+        return new
+    }
+    
+    func url(_ webPage: String) -> Self {
+        var new = self
+        new.webURL = .page(webPage)
+        return new
+    }
+    
+}
+
+public extension RadioStation {
     func temporaryTitle(_ title: String, through endDate: (day: Int, month: Int, year: Int)) -> Self {
         var new = self
         
@@ -116,48 +164,21 @@ public extension RadioStation {
         }
     }
     
-    func slogan(_ slogan: String) -> Self {
+}
+
+
+public extension RadioStation {
+    func member(of networks: Network...) -> Self {
         var new = self
-        new.slogan = slogan
+        new.networkAffiliations.formUnion(networks)
         return new
     }
     
-    func url(authority: String, useHTTPS: Bool = true) -> Self {
+    func owner(_ owners: Broadcaster...) -> Self {
         var new = self
-        new.webURL = .authority(authority, useHTTPS: useHTTPS)
+        new.owners.formUnion(owners)
         return new
     }
-    
-    func url(_ webPage: String) -> Self {
-        var new = self
-        new.webURL = .page(webPage)
-        return new
-    }
-    
-    func callLettersFollowFrequency() -> Self {
-        var new = self
-        new.properties.callLettersFollowFrequency = true
-        return new
-    }
-    
-    func ignoreBroadcastCityInTitle() -> Self {
-        var new = self
-        new.properties.ignoreMarketInTitle = true
-        return new
-    }
-    
-    func ignoreFrequencyInTitle() -> Self {
-        var new = self
-        new.properties.ignoreFrequencyInTitle = true
-        return new
-    }
-    
-    func frequencyDesignator(position: DisplayPosition) -> Self {
-        var new = self
-        new.properties.frequencyDesignatorPosition = position
-        return new
-    }
-    
 }
 
 
