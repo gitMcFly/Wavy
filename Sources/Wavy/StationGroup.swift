@@ -8,11 +8,26 @@
 import unstandard
 
 public struct StationGroup {
+    public typealias Station = RadioStation
+    
     @Memoized public var stations: Set<RadioStation>
     
-    public init(@ArrayBuilder _ stations: @escaping () -> Array<RadioStation>) {
-        self._stations = .init { Set(stations()) }
-        
+    public init(market: Market? = nil, @SetResult _ stations: @escaping () -> Set<RadioStation>) {
+        self._stations = Memoized {
+            if let market = market {
+                return stations()
+                    .map {
+                        var new = $0
+                        new.market = market
+                        return new
+                    }
+                    .asSet()
+                
+            } else {
+                return stations()
+                
+            }
+        }
     }
     
 }
