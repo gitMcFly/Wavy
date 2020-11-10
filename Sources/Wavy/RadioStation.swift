@@ -76,6 +76,12 @@ public extension RadioStation {
         return new
     }
     
+    func title(_ title: String) -> Self {
+        var new = self
+        new.title = new.title.replacingText(with: title)
+        return new
+    }
+    
     func temporaryTitle(_ title: String, through endDate: (day: Int, month: Int, year: Int)) -> Self {
         var new = self
         
@@ -93,6 +99,21 @@ public extension RadioStation {
         }
         
         return new
+    }
+    
+    typealias WallClockTime = WallClockTimeRange.Time
+    
+    func during(timeFrom start: WallClockTime, to end: WallClockTime,
+                in timeZone: TimeZone, modifier: (Self) -> Self) -> Self {
+        let timeRange = WallClockTimeRange(start: start, end: end)
+        
+        if timeRange(includes: .now(), in: timeZone) {
+            return modifier(self)
+            
+        } else {
+            return self
+            
+        }
     }
     
     func slogan(_ slogan: String) -> Self {
