@@ -8,7 +8,7 @@
 import Foundation
 import unstandard
 
-public enum Frequency {
+public enum Frequency: Hashable {
     case fm(_ mhz: Int, _ dMHz: Int)
     case am(_ khz: Int)
     

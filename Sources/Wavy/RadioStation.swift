@@ -8,8 +8,8 @@
 import Foundation
 import unstandard
 
-public struct RadioStation {
-    internal struct Properties {
+public struct RadioStation: Hashable {
+    internal struct Properties: Hashable {
         var ignoreFrequencyInTitle = false
         var ignoreMarketInTitle = false
         
@@ -159,7 +159,7 @@ extension RadioStation {
 // MARK -
 
 public extension RadioStation {
-    enum Title {
+    enum Title: Hashable {
         case prefix(_ title: String) // ex. "Star 102.1"
         case suffix(_ title: String) // ex. "105.5 The River"
         case callLetters
@@ -169,7 +169,7 @@ public extension RadioStation {
 }
 
 extension RadioStation {
-    public enum WebURL {
+    public enum WebURL: Hashable {
         case authority(_ authority: String, useHTTPS: Bool) // ex. "kuow.org"
         case page(_ webPage: String)        // ex. "https://www.etsu.edu/wets/"
         
