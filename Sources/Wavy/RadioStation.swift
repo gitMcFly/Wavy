@@ -12,6 +12,8 @@ public struct RadioStation: Hashable {
     internal struct Properties: Hashable {
         var ignoreFrequencyInTitle = false
         var ignoreMarketInTitle = false
+        var callLettersFollowFrequency = false
+        var frequencyDesignatorPosition = DisplayPosition.following
         
     }
     
@@ -111,6 +113,12 @@ public extension RadioStation {
         return new
     }
     
+    func callLettersFollowFrequency() -> Self {
+        var new = self
+        new.properties.callLettersFollowFrequency = true
+        return new
+    }
+    
     func ignoreBroadcastCityInTitle() -> Self {
         var new = self
         new.properties.ignoreMarketInTitle = true
@@ -123,6 +131,12 @@ public extension RadioStation {
         return new
     }
     
+    func frequencyDesignator(position: DisplayPosition) -> Self {
+        var new = self
+        new.properties.frequencyDesignatorPosition = position
+        return new
+    }
+    
 }
 
 
@@ -130,9 +144,15 @@ public extension RadioStation {
 
 extension RadioStation {
     @SingleResult public var formattedTitle: String {
+        let frequency = self.frequency
+            .description(frequencyDesignatorPosition: properties.frequencyDesignatorPosition)
+        
         switch title {
         case _ where properties.ignoreFrequencyInTitle:
             title.text ?? callLetters
+            
+        case .callLetters where properties.callLettersFollowFrequency:
+            "\(frequency) \(callLetters)"
             
         case .callLetters:
             "\(callLetters) \(frequency)"
@@ -141,10 +161,16 @@ extension RadioStation {
             if let joinedPrefix = title.droppingSuffix("-") {
                 joinedPrefix + frequency.description
                 
+            } else if properties.callLettersFollowFrequency {
+                "\(title) \(frequency) \(callLetters)"
+                
             } else {
                 "\(title) \(frequency)"
                 
             }
+            
+        case .suffix(let title) where properties.callLettersFollowFrequency:
+            "\(frequency) \(title) \(callLetters)"
             
         case .suffix(let title):
             "\(frequency) \(title)"
