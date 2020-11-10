@@ -62,6 +62,12 @@ public struct RadioStation: Hashable {
 // MARK: - Property Setters
 
 public extension RadioStation {
+    func market(_ market: Market) -> Self {
+        var new = self
+        new.market = market
+        return new
+    }
+    
     func broadcastCity(_ cityName: String) -> Self {
         var new = self
         new.cityName = cityName
