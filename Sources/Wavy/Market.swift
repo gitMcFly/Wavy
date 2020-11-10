@@ -7,30 +7,38 @@
 
 import Foundation
 
-// soon to be replaced by a struct
-public enum Market: String {
+public struct Market: Hashable {
+    fileprivate let id: String
+    
+    init(id: String) {
+        self.id = id
+    }
+    
+}
+
+extension Market {
     // alabama
-    case birmingham
-    case huntsville
-    case troyAL
+    public static let birmingham = Market(id: "birmingham")
+    public static let huntsville = Market(id: "huntsville")
+    public static let troyAL = Market(id: "troyAL")
     
     // massachusetts
-    case boston
+    public static let boston = Market(id: "boston")
     
     // pennsylvania
-    case philadelphia
+    public static let philadelphia = Market(id: "philadelphia")
     
     // tennessee
-    case chattanooga
-    case collegedale
-    case knoxville
-    case triCitiesTN
+    public static let chattanooga = Market(id: "chattanooga")
+    public static let collegedale = Market(id: "collegedale")
+    public static let knoxville = Market(id: "knoxville")
+    public static let triCitiesTN = Market(id: "triCitiesTN")
     
     // virginia
-    case lebanonVA
+    public static let lebanonVA = Market(id: "lebanonVA")
     
     // washington
-    case seattle
+    public static let seattle = Market(id: "seattle")
     
 }
 
@@ -47,8 +55,7 @@ extension Market: CustomStringConvertible {
             return "Troy"
             
         default:
-            assert(rawValue.suffix(2).allSatisfy(\.isLowercase))
-            return rawValue.capitalized
+            return id.capitalized
             
         }
     }
