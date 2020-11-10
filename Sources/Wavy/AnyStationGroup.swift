@@ -7,7 +7,7 @@
 
 import unstandard
 
-public struct AnyStationGroup {
+public struct AnyStationGroup: StationGroup {
     public typealias Station = RadioStation
     
     @Memoized public var stations: Set<RadioStation>
