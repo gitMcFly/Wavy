@@ -14,6 +14,9 @@ let package = Package(
         .library(
             name: "Wavy",
             targets: ["Wavy"]),
+        .library(
+            name: "Stations",
+            targets: ["Wavy", "Stations"]),
     ],
     dependencies: [
         .package(url: "https://github.com/christopherweems/unstandard.git", .branch("main")),
@@ -24,6 +27,12 @@ let package = Package(
         .target(
             name: "Wavy",
             dependencies: [
+                .product(name: "unstandard", package: "unstandard"),
+            ]),
+        .target(
+            name: "Stations",
+            dependencies: [
+                "Wavy",
                 .product(name: "unstandard", package: "unstandard"),
             ]),
         .testTarget(
