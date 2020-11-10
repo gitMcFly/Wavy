@@ -26,7 +26,7 @@ public struct RadioStation: Hashable {
     
     let frequency: Frequency
     
-    public private(set) var market: Market?
+    public internal(set) var market: Market?
     var cityName: String? = nil
     
     
