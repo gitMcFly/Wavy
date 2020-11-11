@@ -5,7 +5,7 @@
 //  Created by Christopher Weems on 11/10/20.
 //
 
-import Foundation
+import unstandard
 
 public struct StationReader {
     let station: RadioStation
@@ -34,6 +34,23 @@ public extension StationReader {
         return [city, state]
             .compactMap { $0 }
             .joined(separator: ", ")
+    }
+    
+}
+
+public extension StationReader {
+    var sortFrequency: String? {
+        switch station.frequency {
+        case let .fm(mhz, dMHz):
+            return "F-\(mhz).\(dMHz)"
+            
+        case let .am(khz):
+            return "Z-\(khz)"
+            
+        case .none:
+            return nil
+            
+        }
     }
     
 }
