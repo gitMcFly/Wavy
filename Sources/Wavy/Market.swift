@@ -58,3 +58,38 @@ extension Market: CustomStringConvertible {
     }
     
 }
+
+public extension Market {
+    func withStateAbbreviation() -> (city: String, stateAbbreviation: String?) {
+        (description, stateAbbreviation)
+    }
+    
+    var stateAbbreviation: String? {
+        switch self {
+        case .atlanta:
+            return "GA"
+            
+        case .birmingham, .huntsville:
+            return "AL"
+            
+        case .boston:
+            return "MA"
+            
+        case .chattanooga, .collegedale, .knoxville, .nashville:
+            return "TN"
+            
+        case .philadelphia:
+            return "PA"
+            
+        case .seattle:
+            return "WA"
+            
+        case _ where rawValue.suffix(2).allSatisfy(\.isUppercase):
+            return rawValue.suffix(2).asString()
+            
+        default:
+            return nil
+        }
+    }
+    
+}
