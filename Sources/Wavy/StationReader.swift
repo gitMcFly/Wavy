@@ -64,4 +64,8 @@ public extension StationReader {
         .joined(separator: "-")
     }
     
+    var includesFrequencyInTitle: Bool {
+        !station.properties.ignoreFrequencyInTitle
+    }
+    
 }
