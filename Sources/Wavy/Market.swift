@@ -39,9 +39,8 @@ public enum Market: String, Hashable, CaseIterable {
 
 
 extension Market: CustomStringConvertible {
-    public var description: String {
-        city
-    }
+    @available(*, deprecated)
+    public var description: String { city }
     
 }
 
@@ -65,7 +64,7 @@ public extension Market {
     }
     
     func withStateAbbreviation() -> (city: String, stateAbbreviation: String?) {
-        (description, stateAbbreviation)
+        (city, stateAbbreviation)
     }
     
     var stateAbbreviation: String? {
