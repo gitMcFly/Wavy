@@ -22,6 +22,9 @@ extension Tennessee {
             Station("wutc", .fm(88, 1))
                 .url(authority: "wutc.org")
             
+            Station("wawl", "WAWL Chattanooga State Community College")
+                .url("https://wawl.org")
+            
         }
         
     }
