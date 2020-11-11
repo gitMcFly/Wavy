@@ -83,8 +83,10 @@ extension Tennessee {
             Station("want", .fm(98, 9))
                 .frequencyDesignator(.leading)
             
-            Station("wwtn", "Super Talk 99.7 WTN", .fm(99, 7))
-                .ignoreFrequencyInTitle()
+            Station("wwtn", "Super Talk", .fm(99, 7))
+                .frequencyDesignator(.hidden)
+                .callLettersFollowFrequency()
+                .displayCallLetters("wtn")
                 .url(authority: "997wtn.com")
             
             Station("wrlt", "Lightning 100", .fm(100, 1))
