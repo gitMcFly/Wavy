@@ -12,10 +12,13 @@ public struct RadioStation: Hashable {
     internal struct Properties {
         var ignoreFrequencyInTitle = false
         var ignoreMarketInTitle = false
+        
         var callLettersFollowFrequency = false
+        var displayCallLetters: String?
+        
         var frequencyDesignatorPosition = DisplayPosition.trailing
         var broadcastCity: (city: String, state: String?)? = nil
-                
+        
     }
     
     internal var properties = Properties()
@@ -100,6 +103,12 @@ public extension RadioStation {
     func callLettersFollowFrequency() -> Self {
         var new = self
         new.properties.callLettersFollowFrequency = true
+        return new
+    }
+    
+    func displayCallLetters(_ displayCallLetters: String) -> Self {
+        var new = self
+        new.properties.displayCallLetters = displayCallLetters.uppercased()
         return new
     }
         
@@ -188,6 +197,8 @@ extension RadioStation {
     public var formattedTitle: String {
         let frequency = self.frequency?
             .description(frequencyDesignatorPosition: properties.frequencyDesignatorPosition)
+        
+        let callLetters = properties.displayCallLetters ?? self.callLetters
         
         switch title {
         case _ where properties.ignoreFrequencyInTitle:
