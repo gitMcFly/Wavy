@@ -26,6 +26,7 @@ public enum Market: String, Hashable, CaseIterable {
     case chattanooga
     case collegedale
     case knoxville
+    case nashville
     case triCitiesTN
     
     // virginia
