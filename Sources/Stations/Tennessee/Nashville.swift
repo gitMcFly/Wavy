@@ -81,28 +81,47 @@ extension Tennessee {
             Station("wrfn-lp", .fm(98, 9))
             
             Station("want", .fm(98, 9))
+                .frequencyDesignator(position: .preceeding)
             
-            Station("wwtn", .fm(99, 7))
+            Station("wwtn", "Super Talk 99.7 WTN", .fm(99, 7))
+                .ignoreFrequencyInTitle()
+                .url(authority: "997wtn.com")
             
-            Station("wrlt", .fm(100, 1))
-        
+            Station("wrlt", "Lightning 100", .fm(100, 1))
+                .ignoreFrequencyInTitle()
+                .url(authority: "lightning100.com")
+            
             Station("wbou-lp", .fm(100, 5))
             
-            Station("wubt", .fm(101, 1))
+            Station("wubt", .fm(101, 1), "The Beat")
+                .frequencyDesignator(position: .hidden)
+                .url(authority: "1011thebeat.iheart.com")
             
             Station("wxna-lp", .fm(101, 5))
             
             Station("wjle", .fm(101, 7))
+                .broadcastCity("Smithville")
+                .slogan("Your Local News Leader")
+                .url(authority: "wjle.com")
         
             Station("wkom", .fm(101, 7))
+                .url("https://www.wkomwkrm.com/wkom")
             
-            Station("wlct", .fm(102, 1))
+            Station("wlct", "WLCT Country", .fm(102, 1))
+                .url(authority: "wlct.com")
             
-            Station("wprt", .fm(102, 5))
+            Station("wprt", .fm(102, 5), "The Game")
+                .frequencyDesignator(position: .hidden)
+                .url(authority: "thegamenashville.com")
             
-            Station("wbuz", .fm(102, 9))
+            Station("wbuz", .fm(102, 9), "Buzz")
+                .frequencyDesignator(position: .hidden)
+                .slogan("Nashville's Rock Station")
+                .url(authority: "1029thebuzz.com")
         
-            Station("wkdf", .fm(103, 3))
+            Station("wkdf", .fm(103, 3), "Country")
+                .frequencyDesignator(position: .hidden)
+                .url(authority: "1033country.com")
             
             Station("wiaf-lp", .fm(103, 9))
             
@@ -110,19 +129,30 @@ extension Tennessee {
             
             Station("wdyo-lp", .fm(104, 1))
         
-            Station("wucz", .fm(104, 1))
+            Station("wucz", .fm(104, 1), "The Ranch")
+                .frequencyDesignator(position: .hidden)
+                .url(authority: "1041theranch.com")
             
-            Station("wgfx", .fm(104, 5))
+            Station("wgfx", .fm(104, 5), "The Zone")
+                .frequencyDesignator(position: .hidden)
+                .url(authority: "1045thezone.com")
             
             Station("wboz", .fm(104, 9))
             
-            Station("wvwb", .fm(105, 1))
+            Station("wvwb", "The Wolf", .fm(105, 1))
+                .frequencyDesignator(position: .hidden)
+                .url(authority: "1051thewolf.fm")
         
-            Station("wnrq", .fm(105, 9))
+            Station("wnrq", .fm(105, 9), "The Rock")
+                .frequencyDesignator(position: .hidden)
+                .url(authority: "1059therock.iheart.com")
             
-            Station("wnfn", .fm(106, 7))
-            
-            Station("wrvw", .fm(107, 5))
+            Station("wnfn", "Hot", .fm(106, 7))
+                .frequencyDesignator(position: .hidden)
+                .url(authority: "hot1067.com")
+
+            Station("wrvw", .fm(107, 5), "The River")                .frequencyDesignator(position: .hidden)
+                .url(authority: "1075theriver.iheart.com")
             
         }
     }
