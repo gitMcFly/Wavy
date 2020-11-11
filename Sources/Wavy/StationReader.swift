@@ -24,11 +24,12 @@ public extension StationReader {
     
     var subtitle: String? {
         guard !station.properties.ignoreMarketInTitle else { return nil }
-        guard let (city, _state) = station.properties.broadcastCity ?? station.market?.withStateAbbreviation() else {
+        guard let city = station.properties.broadcastCity ?? station.market?.city else {
             return nil
         }
-        
-        let state = _state ?? station.market?.stateAbbreviation
+        guard let state = station.properties.broadcastState ?? station.market?.stateAbbreviation else {
+            return nil
+        }
         
         return Array {
             [city, state]

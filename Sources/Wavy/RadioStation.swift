@@ -9,7 +9,7 @@ import Foundation
 import unstandard
 
 public struct RadioStation: Hashable {
-    internal struct Properties {
+    internal struct Properties: Hashable {
         var ignoreFrequencyInTitle = false
         var ignoreMarketInTitle = false
         
@@ -17,7 +17,9 @@ public struct RadioStation: Hashable {
         var displayCallLetters: String?
         
         var frequencyDesignatorPosition = DisplayPosition.trailing
-        var broadcastCity: (city: String, state: String?)? = nil
+        
+        var broadcastCity: String? = nil
+        var broadcastState: String? = nil
         
     }
     
@@ -84,7 +86,8 @@ public extension RadioStation {
     
     func broadcastCity(_ cityName: String, state: String? = nil) -> Self {
         var new = self
-        new.properties.broadcastCity = (cityName, state)
+        new.properties.broadcastCity = cityName
+        new.properties.broadcastState = state
         return new
     }
     
@@ -246,38 +249,10 @@ extension RadioStation {
     @available(*, deprecated)
     public func formattedTitle(includeMarket: Bool) -> String {
         guard includeMarket && !properties.ignoreMarketInTitle else { return formattedTitle }
-        let broadcastCity = properties.broadcastCity?.city ?? market?.city
+        let broadcastCity = properties.broadcastCity ?? market?.city
         guard let marketSuffix = broadcastCity?.wrap({ ", \($0)" }) else { return formattedTitle }
         
         return formattedTitle + marketSuffix
-    }
-    
-}
-
-
-// MARK: -
-
-extension RadioStation.Properties: Hashable {
-    func hash(into hasher: inout Hasher) {
-        ignoreFrequencyInTitle.hash(into: &hasher)
-        ignoreMarketInTitle.hash(into: &hasher)
-        callLettersFollowFrequency.hash(into: &hasher)
-        frequencyDesignatorPosition.hash(into: &hasher)
-        broadcastCity?.city.hash(into: &hasher)
-        broadcastCity?.state?.hash(into: &hasher)
-        
-    }
-    
-    static func ==(_ lhs: Self, _ rhs: Self) -> Bool {
-        .all(true) {
-            lhs.ignoreFrequencyInTitle == rhs.ignoreFrequencyInTitle
-            lhs.ignoreMarketInTitle == rhs.ignoreMarketInTitle
-            lhs.callLettersFollowFrequency == rhs.callLettersFollowFrequency
-            lhs.frequencyDesignatorPosition == rhs.frequencyDesignatorPosition
-            lhs.broadcastCity?.city == rhs.broadcastCity?.city
-            lhs.broadcastCity?.state == rhs.broadcastCity?.state
-            
-        }
     }
     
 }
