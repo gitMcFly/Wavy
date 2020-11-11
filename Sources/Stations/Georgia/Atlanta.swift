@@ -11,12 +11,14 @@ extension Georgia {
             
             // MARK: - FM Stations
             
-            Station("wras", "Album 88", .fm(88, 5))
-                .during(timeFrom: (5, 00), to: (19, 00), in: .atlanta) {
-                    $0.title("88.5 GPB")
+            Station("wras", .fm(88, 5), "GPB")
+                .frequencyDesignator(.hidden)
+                .during(timeFrom: (19, 00), to: (5, 00), in: .atlanta) { wras in
+                    wras
+                        .title("Album 88")
+                        .ignoreFrequencyInTitle()
                     
                 }
-                .ignoreFrequencyInTitle()
                 .url(authority: "wras.org")
             
             Station("wrfg", .fm(89, 3))
