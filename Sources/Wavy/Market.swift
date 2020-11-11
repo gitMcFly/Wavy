@@ -37,13 +37,6 @@ public enum Market: String, Hashable, CaseIterable {
     
 }
 
-
-extension Market: CustomStringConvertible {
-    @available(*, deprecated)
-    public var description: String { city }
-    
-}
-
 public extension Market {
     var city: String {
         let descriptionTitle: Substring

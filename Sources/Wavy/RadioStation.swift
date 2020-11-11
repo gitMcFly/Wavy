@@ -235,7 +235,7 @@ extension RadioStation {
     @available(*, deprecated)
     public func formattedTitle(includeMarket: Bool) -> String {
         guard includeMarket && !properties.ignoreMarketInTitle else { return formattedTitle }
-        let broadcastCity = properties.broadcastCity?.city ?? market?.description
+        let broadcastCity = properties.broadcastCity?.city ?? market?.city
         guard let marketSuffix = broadcastCity?.wrap({ ", \($0)" }) else { return formattedTitle }
         
         return formattedTitle + marketSuffix
