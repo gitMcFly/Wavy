@@ -24,7 +24,7 @@ extension Tennessee {
                 .url(authority: "wuot.org")
             
             Station("wnox", .fm(93, 1))
-                .frequencyDesignator(position: .hidden)
+                .frequencyDesignator(.hidden)
                 .callLettersFollowFrequency()
                 .url(authority: "931wnox.com")
                 .owner(.summitMedia)
@@ -33,23 +33,23 @@ extension Tennessee {
                 .url(authority: "wjbe.org")
             
             Station("wcyq", .fm(100, 3), "The Wolf")
-                .frequencyDesignator(position: .hidden)
+                .frequencyDesignator(.hidden)
                 .slogan("Commercial Free New Country")
                 .owner(.summitMedia)
                 .url(authority: "knoxvillewolf.com")
             
             Station("wwst", "Star", .fm(102, 1))
                 .url(authority: "star1021fm.com")
-                .frequencyDesignator(position: .hidden)
+                .frequencyDesignator(.hidden)
                 .owner(.summitMedia)
             
             Station("wimz", "Classic Rock", .fm(103, 5))
-                .frequencyDesignator(position: .hidden)
+                .frequencyDesignator(.hidden)
                 .url(authority: "wimz.com")
                 .owner(.cumulusMedia)
             
             Station("wkht", "Hot", .fm(104, 5))
-                .frequencyDesignator(position: .hidden)
+                .frequencyDesignator(.hidden)
                 .slogan("The Beat of Knoxville")
                 .url(authority: "hot1045.net")
                 .owner(.summitMedia)
@@ -58,7 +58,7 @@ extension Tennessee {
                 .url(authority: "wozoradio.com")
             
             Station("wivk", .fm(107, 7))
-                .frequencyDesignator(position: .preceeding)
+                .frequencyDesignator(.leading)
                 .url(authority: "wivk.com")
                 .owner(.cumulusMedia)
             

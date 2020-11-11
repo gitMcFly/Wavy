@@ -13,7 +13,7 @@ public struct RadioStation: Hashable {
         var ignoreFrequencyInTitle = false
         var ignoreMarketInTitle = false
         var callLettersFollowFrequency = false
-        var frequencyDesignatorPosition = DisplayPosition.following
+        var frequencyDesignatorPosition = DisplayPosition.trailing
         var broadcastCity: (city: String, state: String?)? = nil
                 
     }
@@ -103,7 +103,7 @@ public extension RadioStation {
         return new
     }
         
-    func frequencyDesignator(position: DisplayPosition) -> Self {
+    func frequencyDesignator(_ position: DisplayPosition) -> Self {
         var new = self
         new.properties.frequencyDesignatorPosition = position
         return new

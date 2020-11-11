@@ -6,8 +6,8 @@
 //
 
 public enum DisplayPosition {
-    case preceeding
-    case following
+    case leading
+    case trailing
     case hidden
     
 }

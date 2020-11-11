@@ -16,7 +16,7 @@ public enum Frequency: Hashable {
 
 extension Frequency: CustomStringConvertible {
     public var description: String {
-        description(frequencyDesignatorPosition: .following)
+        description(frequencyDesignatorPosition: .trailing)
     }
     
 }
@@ -24,10 +24,10 @@ extension Frequency: CustomStringConvertible {
 extension Frequency {    
     @SingleResult public func description(frequencyDesignatorPosition: DisplayPosition) -> String {
         switch frequencyDesignatorPosition {
-        case .preceeding:
+        case .leading:
             "\(technologyDesignator) \(frequencyNumber)"
             
-        case .following:
+        case .trailing:
             "\(frequencyNumber) \(technologyDesignator)"
             
         case .hidden:

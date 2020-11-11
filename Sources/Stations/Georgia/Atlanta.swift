@@ -33,7 +33,7 @@ extension Georgia {
                 .url(authority: "wclk.com")
             
             Station("wzgc", .fm(92, 9), "The Game")
-                .frequencyDesignator(position: .hidden)
+                .frequencyDesignator(.hidden)
                 .url(authority: "929thegame.radio.com")
             
             Station("wubl", .fm(94, 9), "The Bull")
@@ -46,7 +46,7 @@ extension Georgia {
             
             Station("wwpv", "Power", .fm(96, 1))
                 .url(authority: "power961.iheart.com")
-                .frequencyDesignator(position: .hidden)
+                .frequencyDesignator(.hidden)
             
             Station("WSB-FM", "B-", .fm(98, 5))
                 .url(authority: "b985.com")
@@ -67,7 +67,7 @@ extension Georgia {
             Station("wbin", "Atlanta's BIN", .am(640))
                 .url(authority: "atlanta.binbews.com")
                 .ignoreBroadcastCityInTitle()
-                .frequencyDesignator(position: .hidden)
+                .frequencyDesignator(.hidden)
             
             Station("wqxi", "Atlanta Radio Korea", .am(790))
                 .ignoreBroadcastCityInTitle()
@@ -79,7 +79,7 @@ extension Georgia {
             Station("wgka", .am(920), "The Answer")
                 .slogan("News. Opinion. Insight.")
                 .url(authority: "am920theanswer.com")
-                .frequencyDesignator(position: .preceeding)
+                .frequencyDesignator(.leading)
             
             Station("wniv", "Faith Talk", .am(970))
                 .url(authority: "faithtalk970.com")
@@ -91,7 +91,7 @@ extension Georgia {
             
             Station("waok", "News & Talk", .am(1380))
                 .url(authority: "waok.radio.com")
-                .frequencyDesignator(position: .hidden)
+                .frequencyDesignator(.hidden)
                 .callLettersFollowFrequency()
             
             Station("wyze", .am(1480))
