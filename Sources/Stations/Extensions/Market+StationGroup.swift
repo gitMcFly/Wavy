@@ -46,7 +46,7 @@ internal extension Market {
             return Tennessee.TriCities()
             
         default:
-            fatalError("No stations exist for \(self.description)")
+            fatalError("No stations exist for \(self.city)")
             
         }
     }
