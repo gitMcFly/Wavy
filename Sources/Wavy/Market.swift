@@ -40,6 +40,13 @@ public enum Market: String, Hashable, CaseIterable {
 
 extension Market: CustomStringConvertible {
     public var description: String {
+        city
+    }
+    
+}
+
+public extension Market {
+    var city: String {
         let descriptionTitle: Substring
         
         switch self {
@@ -57,9 +64,6 @@ extension Market: CustomStringConvertible {
         return descriptionTitle.capitalized
     }
     
-}
-
-public extension Market {
     func withStateAbbreviation() -> (city: String, stateAbbreviation: String?) {
         (description, stateAbbreviation)
     }
@@ -89,6 +93,7 @@ public extension Market {
             
         default:
             return nil
+            
         }
     }
     
