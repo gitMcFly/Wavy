@@ -18,8 +18,10 @@ extension Pennsylvania {
                 .url(authority: "94wip.radio.com")
                 .ignoreFrequencyInTitle()
             
-            Station("wmgk", "Classic Rock 102.9 MGK", .fm(102, 9))
-                .ignoreFrequencyInTitle()
+            Station("wmgk", "Classic Rock", .fm(102, 9))
+                .frequencyDesignator(.hidden)
+                .callLettersFollowFrequency()
+                .displayCallLetters("mgk")
                 .url(authority: "wmgk.com")
             
             Station("wrti", .fm(90, 1))

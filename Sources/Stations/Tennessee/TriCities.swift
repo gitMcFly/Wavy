@@ -28,17 +28,21 @@ extension Tennessee {
                 .ignoreBroadcastCityInTitle()
                 .url("https://www.hvbcgroup.com/wopi/")
             
-            Station("wrzk", .fm(95, 9))
+            Station("wrzk", .fm(95, 9), "The Hog")
+                .frequencyDesignator(.hidden)
                 .url(authority: "wrzk.com")
             
             Station("wtfm", .fm(98, 5))
                 .url(authority: "wtfm.com")
             
             Station("wvek", "Classic Hits", .fm(102, 7))
+                .frequencyDesignator(.hidden)
+                .callLettersFollowFrequency()
                 .url(authority: "classichits1027.com")
             
             Station("wxbq", .fm(96, 9))
-                .url(authority: "wxbq.com")
+                .slogan("Twenty-Four Carrot Country")
+                .url(authority: "969wxbq.com")
             
         }
         
