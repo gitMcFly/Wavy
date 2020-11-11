@@ -52,8 +52,3 @@ internal extension Market {
     }
     
 }
-
-internal protocol _StationGroup: StationGroup {
-    @SetResult var stations: Set<Station> { get }
-    
-}
