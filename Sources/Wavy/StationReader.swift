@@ -65,8 +65,8 @@ public extension StationReader {
     
     var sortIdentifier: String {
         Array {
-            station.market?.stateAbbreviation
-            station.market?.city
+            station.market?.stateAbbreviation ?? station.properties.broadcastState
+            station.market?.city ?? station.properties.broadcastCity
             sortFrequency
             station.callLetters
             
