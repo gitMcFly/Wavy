@@ -53,4 +53,15 @@ public extension StationReader {
         }
     }
     
+    var sortIdentifier: String {
+        Array {
+            station.market?.stateAbbreviation
+            station.market?.city
+            sortFrequency
+            
+        }
+        .compactMap { $0 }
+        .joined(separator: "-")
+    }
+    
 }
