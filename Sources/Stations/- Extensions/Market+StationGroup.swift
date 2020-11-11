@@ -23,6 +23,9 @@ internal extension Market {
         switch self {
         case .atlanta:
             return Georgia.Atlanta()
+            
+        case .birmingham:
+            return Alabama.Birmingham()
         
         case .boston:
             return Massachusetts.Boston()
