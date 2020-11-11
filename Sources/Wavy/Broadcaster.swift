@@ -9,7 +9,9 @@ import Foundation
 
 public enum Broadcaster {
     case blueRidgeBroadcastingCorporation
+    case crawfordMediaGroup
     case cumulusMedia
+    case iHeartMedia
     case loudMedia
     case midwestCommunications
     case salemMediaGroup
