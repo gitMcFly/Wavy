@@ -101,11 +101,6 @@ extension Tennessee {
             
             Station("wxna-lp", .fm(101, 5))
             
-            Station("wjle", .fm(101, 7))
-                .broadcastCity("Smithville")
-                .slogan("Your Local News Leader")
-                .url(authority: "wjle.com")
-            
             Station("wkom", .fm(101, 7))
                 .url("https://www.wkomwkrm.com/wkom")
             
