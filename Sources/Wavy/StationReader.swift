@@ -30,10 +30,19 @@ public extension StationReader {
         
         let state = _state ?? station.market?.stateAbbreviation
         
-        
-        return [city, state]
-            .compactMap { $0 }
-            .joined(separator: ", ")
+        return Array {
+            [city, state]
+                .compactMap { $0 }
+                .joined(separator: ", ")
+            
+            if !includesFrequencyInTitle {
+                station.frequency?.description
+                
+            }
+            
+        }
+        .compactMap { $0 }
+        .joined(separator: " | ")
     }
     
 }
