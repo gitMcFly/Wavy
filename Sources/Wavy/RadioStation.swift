@@ -30,14 +30,14 @@ public struct RadioStation: Hashable {
     
     public private(set) var webURL: WebURL?
     
-    let frequency: Frequency
+    let frequency: Frequency?
     
     public internal(set) var market: Market?
     
     
     // MARK: - Initializers
     
-    public init(_ callLetters: String, _ titlePrefix: String, _ frequency: Frequency, market: Market? = nil) {
+    public init(_ callLetters: String, _ titlePrefix: String, _ frequency: Frequency? = nil, market: Market? = nil) {
         self.callLetters = callLetters.uppercased()
         self.title = .prefix(titlePrefix)
         self.frequency = frequency
@@ -53,7 +53,7 @@ public struct RadioStation: Hashable {
         
     }
     
-    public init(_ callLetters: String, _ frequency: Frequency, market: Market? = nil) {
+    public init(_ callLetters: String, _ frequency: Frequency? = nil, market: Market? = nil) {
         self.callLetters = callLetters.uppercased()
         self.title = .callLetters
         self.frequency = frequency
@@ -185,37 +185,49 @@ public extension RadioStation {
 //
 
 extension RadioStation {
-    @SingleResult public var formattedTitle: String {
-        let frequency = self.frequency
+    public var formattedTitle: String {
+        let frequency = self.frequency?
             .description(frequencyDesignatorPosition: properties.frequencyDesignatorPosition)
         
         switch title {
         case _ where properties.ignoreFrequencyInTitle:
-            title.text ?? callLetters
+            return title.text ?? callLetters
             
         case .callLetters where properties.callLettersFollowFrequency:
-            "\(frequency) \(callLetters)"
+            return [frequency, callLetters]
+                .compactMap { $0 }
+                .joined(separator: " ")
             
         case .callLetters:
-            "\(callLetters) \(frequency)"
+            return [callLetters, frequency]
+                .compactMap { $0 }
+                .joined(separator: " ")
             
         case .prefix(let title):
             if let joinedPrefix = title.droppingSuffix("-") {
-                joinedPrefix + frequency.description
+                return joinedPrefix + (frequency ?? "")
                 
             } else if properties.callLettersFollowFrequency {
-                "\(title) \(frequency) \(callLetters)"
+                return [title, frequency, callLetters]
+                    .compactMap { $0 }
+                    .joined(separator: " ")
                 
             } else {
-                "\(title) \(frequency)"
+                return [title, frequency]
+                    .compactMap { $0 }
+                    .joined(separator: " ")
                 
             }
             
         case .suffix(let title) where properties.callLettersFollowFrequency:
-            "\(frequency) \(title) \(callLetters)"
+            return [frequency, title, callLetters]
+                .compactMap { $0 }
+                .joined(separator: " ")
             
         case .suffix(let title):
-            "\(frequency) \(title)"
+            return [frequency, title]
+                .compactMap { $0 }
+                .joined(separator: " ")
             
         }
     }
