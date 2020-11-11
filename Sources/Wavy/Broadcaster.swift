@@ -11,5 +11,6 @@ public enum Broadcaster {
     case cumulusMedia
     case midwestCommunications
     case salemMediaGroup
+    case summitMedia
     
 }
