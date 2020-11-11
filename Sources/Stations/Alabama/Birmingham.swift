@@ -47,6 +47,7 @@ extension Alabama {
                 .owner(.iHeartMedia)
             
             Station("wqen", .fm(103, 7), "The Q")
+                .broadcastCity("Trussville")
                 .frequencyDesignator(.hidden)
                 .url(authority: "1037theq.iheart.com")
                 .owner(.iHeartMedia)
