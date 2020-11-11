@@ -33,6 +33,9 @@ internal extension Market {
         case .knoxville:
             return Tennessee.Knoxville()
             
+        case .nashville:
+            return Tennessee.Nashville()
+            
         case .philadelphia:
             return Pennsylvania.Philadelphia()
             
