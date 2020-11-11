@@ -9,12 +9,13 @@ import Foundation
 import unstandard
 
 public struct RadioStation: Hashable {
-    internal struct Properties: Hashable {
+    internal struct Properties {
         var ignoreFrequencyInTitle = false
         var ignoreMarketInTitle = false
         var callLettersFollowFrequency = false
         var frequencyDesignatorPosition = DisplayPosition.following
-        
+        var broadcastCity: (city: String, state: String?)? = nil
+                
     }
     
     internal var properties = Properties()
@@ -32,7 +33,6 @@ public struct RadioStation: Hashable {
     let frequency: Frequency
     
     public internal(set) var market: Market?
-    var cityName: String? = nil
     
     
     // MARK: - Initializers
@@ -79,9 +79,9 @@ public extension RadioStation {
         return new
     }
     
-    func broadcastCity(_ cityName: String) -> Self {
+    func broadcastCity(_ cityName: String, state: String? = nil) -> Self {
         var new = self
-        new.cityName = cityName
+        new.properties.broadcastCity = (cityName, state)
         return new
     }
     
@@ -220,12 +220,41 @@ extension RadioStation {
         }
     }
     
+    @available(*, deprecated)
     public func formattedTitle(includeMarket: Bool) -> String {
         guard includeMarket && !properties.ignoreMarketInTitle else { return formattedTitle }
-        let broadcastCity = cityName ?? market?.description
+        let broadcastCity = properties.broadcastCity?.city ?? market?.description
         guard let marketSuffix = broadcastCity?.wrap({ ", \($0)" }) else { return formattedTitle }
         
         return formattedTitle + marketSuffix
+    }
+    
+}
+
+
+// MARK: -
+
+extension RadioStation.Properties: Hashable {
+    func hash(into hasher: inout Hasher) {
+        ignoreFrequencyInTitle.hash(into: &hasher)
+        ignoreMarketInTitle.hash(into: &hasher)
+        callLettersFollowFrequency.hash(into: &hasher)
+        frequencyDesignatorPosition.hash(into: &hasher)
+        broadcastCity?.city.hash(into: &hasher)
+        broadcastCity?.state?.hash(into: &hasher)
+        
+    }
+    
+    static func ==(_ lhs: Self, _ rhs: Self) -> Bool {
+        .all(true) {
+            lhs.ignoreFrequencyInTitle == rhs.ignoreFrequencyInTitle
+            lhs.ignoreMarketInTitle == rhs.ignoreMarketInTitle
+            lhs.callLettersFollowFrequency == rhs.callLettersFollowFrequency
+            lhs.frequencyDesignatorPosition == rhs.frequencyDesignatorPosition
+            lhs.broadcastCity?.city == rhs.broadcastCity?.city
+            lhs.broadcastCity?.state == rhs.broadcastCity?.state
+            
+        }
     }
     
 }
