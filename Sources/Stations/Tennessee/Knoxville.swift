@@ -62,6 +62,7 @@ extension Tennessee {
                 .url(authority: "newstalk987.com")
             
             Station("wjbe", "Jammin'", .fm(99, 7))
+                .frequencyDesignator(.hidden)
                 .url(authority: "wjbe.org")
             
             Station("wcyq", .fm(100, 3), "The Wolf")
