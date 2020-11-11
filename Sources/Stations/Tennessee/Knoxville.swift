@@ -11,10 +11,10 @@ import unstandard
 extension Tennessee {
     struct Knoxville: _StationGroup {
         var stations: Set<RadioStation> {
-            Station("wdvx", .fm(88, 3)) // american roots
-                .url(authority: "wdvx.com")
+            Station("wylv", .fm(88, 3))
+                .owner(.educationalMediaFoundation)
             
-            Station("wdvx", .fm(89, 9))
+            Station("wdvx", .fm(89, 9)) // american roots
                 .url(authority: "wdvx.com")
             
             Station("wutk", .fm(90, 3), "The Rock")
