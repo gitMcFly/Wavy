@@ -68,6 +68,7 @@ public extension StationReader {
             station.market?.stateAbbreviation
             station.market?.city
             sortFrequency
+            station.callLetters
             
         }
         .compactMap { $0 }
