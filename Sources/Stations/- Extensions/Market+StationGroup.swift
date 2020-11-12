@@ -36,6 +36,9 @@ internal extension Market {
         case .knoxville:
             return Tennessee.Knoxville()
             
+        case .huntsville:
+            return Alabama.Huntsville()
+            
         case .memphis:
             return Tennessee.Memphis()
             
@@ -52,9 +55,14 @@ internal extension Market {
             return Tennessee.TriCities()
             
         default:
-            fatalError("No stations exist for \(self.city)")
+            return EmptyStationGroup()
             
         }
     }
+    
+}
+
+fileprivate struct EmptyStationGroup: StationGroup {
+    var stations: Set<RadioStation> { [] }
     
 }
