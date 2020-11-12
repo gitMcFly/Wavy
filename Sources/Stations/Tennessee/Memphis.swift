@@ -41,11 +41,11 @@ extension Tennessee {
             
             Station("webl", "Classic Country", .fm(95, 3))
                 .frequencyDesignator(.hidden)
-                .broadcastCity("Coldwater", state: "MS")
+                .broadcastCity("Coldwater", state: .mississippi)
                 .url(authority: "mississippicountry.com")
             
             Station("whal", .fm(95, 7))
-                .broadcastCity("Horn Lake", state: "MS")
+                .broadcastCity("Horn Lake", state: .mississippi)
                 .url(authority: "hallelujahfm.iheart.com")
                 .owner(.iHeartMedia)
             

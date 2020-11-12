@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Statehood
 import unstandard
 
 public struct RadioStation: Hashable {
@@ -19,7 +20,7 @@ public struct RadioStation: Hashable {
         var frequencyDesignatorPosition = DisplayPosition.trailing
         
         var broadcastCity: String? = nil
-        var broadcastState: String? = nil
+        var broadcastState: State? = nil
         
     }
     
@@ -84,7 +85,7 @@ public extension RadioStation {
         return new
     }
     
-    func broadcastCity(_ cityName: String, state: String? = nil) -> Self {
+    func broadcastCity(_ cityName: String, state: State? = nil) -> Self {
         var new = self
         new.properties.broadcastCity = cityName
         new.properties.broadcastState = state

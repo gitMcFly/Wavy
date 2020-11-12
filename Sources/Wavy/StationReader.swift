@@ -27,7 +27,7 @@ public extension StationReader {
         guard let city = station.properties.broadcastCity ?? station.market?.city else {
             return nil
         }
-        guard let state = station.properties.broadcastState ?? station.market?.stateAbbreviation else {
+        guard let state = station.properties.broadcastState?.uspsAbbreviation ?? station.market?.stateAbbreviation else {
             return nil
         }
         
@@ -65,7 +65,7 @@ public extension StationReader {
     
     var sortIdentifier: String {
         Array {
-            station.market?.stateAbbreviation ?? station.properties.broadcastState
+            station.market?.stateAbbreviation ?? station.properties.broadcastState?.uspsAbbreviation
             station.market?.city ?? station.properties.broadcastCity
             sortFrequency
             station.callLetters

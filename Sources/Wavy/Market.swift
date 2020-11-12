@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Statehood
 
 public enum Market: String, Hashable, CaseIterable {
     // alabama
@@ -61,29 +62,39 @@ public extension Market {
     }
     
     var stateAbbreviation: String? {
-        switch self {
-        case .atlanta:
-            return "GA"
+        var state: State? {
+            switch self {
+            case .atlanta:
+                return .georgia
+                
+            case .birmingham, .huntsville:
+                return .alabama
+                
+            case .boston:
+                return .massachusetts
+                
+            case .chattanooga, .knoxville, .memphis, .nashville:
+                return .tennessee
+                
+            case .philadelphia:
+                return .pennsylvania
+                
+            case .seattle:
+                return .washington
+                
+            default:
+                return nil
+                
+            }
+        }
+        
+        if let state = state {
+            return state.uspsAbbreviation
             
-        case .birmingham, .huntsville:
-            return "AL"
-            
-        case .boston:
-            return "MA"
-            
-        case .chattanooga, .knoxville, .memphis, .nashville:
-            return "TN"
-            
-        case .philadelphia:
-            return "PA"
-            
-        case .seattle:
-            return "WA"
-            
-        case _ where rawValue.suffix(2).allSatisfy(\.isUppercase):
+        } else if rawValue.suffix(2).allSatisfy(\.isUppercase) {
             return rawValue.suffix(2).asString()
             
-        default:
+        } else {
             return nil
             
         }
