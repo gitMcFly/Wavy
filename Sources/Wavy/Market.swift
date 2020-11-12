@@ -24,6 +24,7 @@ public enum Market: String, Hashable, CaseIterable {
     
     // tennessee
     case chattanooga
+    case memphis
     case knoxville
     case nashville
     case triCitiesTN
@@ -70,7 +71,7 @@ public extension Market {
         case .boston:
             return "MA"
             
-        case .chattanooga, .knoxville, .nashville:
+        case .chattanooga, .knoxville, .memphis, .nashville:
             return "TN"
             
         case .philadelphia:
