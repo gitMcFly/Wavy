@@ -12,6 +12,7 @@ public enum Broadcaster {
     case crawfordMediaGroup
     case cumulusMedia
     case educationalMediaFoundation
+    case entercom
     case iHeartMedia
     case loudMedia
     case midwestCommunications
