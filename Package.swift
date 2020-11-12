@@ -20,6 +20,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/christopherweems/unstandard.git", .branch("main")),
+        .package(url: "https://github.com/christopherweems/Statehood.git", .branch("main")),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -28,6 +29,7 @@ let package = Package(
             name: "Wavy",
             dependencies: [
                 .product(name: "unstandard", package: "unstandard"),
+                .product(name: "Statehood", package: "Statehood"),
             ]),
         .target(
             name: "Stations",
