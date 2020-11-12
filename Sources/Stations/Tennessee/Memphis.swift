@@ -72,13 +72,13 @@ extension Tennessee {
             
             Station("wrbo", .fm(103, 5))
                 .callLettersFollowFrequency()
-                .url(authority: "1035wrbo.com")
+                .url(authority: "1035wrbo.com", useHTTPS: false)
                 .owner(.cumulusMedia)
             
             
             Station("wrvr", .fm(104, 5), "The River")
                 .frequencyDesignator(.hidden)
-                .url(authority: "1045theriver.com")
+                .url(authority: "1045theriver.radio.com")
             
             Station("wlok", "FM 105 WLOK", .fm(104, 9))
                 .ignoreFrequencyInTitle()
