@@ -13,12 +13,14 @@ public enum Network: Hashable {
     case nashFM
 
     // news
+    case apm // american public media
     case americanUrbanRadio
     case associatedPress
     case blackInformation
     case bloomberg
     case foxNews
     case npr
+    case prx // public radio exchange
     
     // religious
     case americanFamilyRadio
