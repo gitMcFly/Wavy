@@ -10,6 +10,9 @@ import Foundation
 extension Tennessee {
     struct TriCities: _StationGroup {
         var stations: Set<Station> {
+            
+            // fm stations
+            
             Station("wcsk", .fm(90, 3))
                 .broadcastCity("Kingsport")
                 .url("https://www.k12k.com/apps/pages/index.jsp?uREC_ID=346032&type=d&pREC_ID=754402")
@@ -23,6 +26,10 @@ extension Tennessee {
             
             Station("whcb", .fm(91, 5))
                 .url(authority: "whcbradio.com")
+            
+            Station("wrgs", .fm(94, 5))
+                .slogan("Your Information Network")
+                .url(authority: "wrgsradio.com")
             
             Station("wopi", "ESPN Tri-Cities", .fm(98, 1))
                 .ignoreBroadcastCityInTitle()
@@ -43,6 +50,13 @@ extension Tennessee {
             Station("wxbq", .fm(96, 9))
                 .slogan("Twenty-Four Carrot Country")
                 .url(authority: "969wxbq.com")
+            
+            
+            // am stations
+            
+            Station("wxsm", .am(640), "Xtreme Sports Monster")
+                .url(authority: "640wxsm.com")
+                .owner(.cumulusMedia)
             
         }
         
