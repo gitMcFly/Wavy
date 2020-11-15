@@ -17,6 +17,9 @@ public enum Market: String, Hashable, CaseIterable {
     // georgia
     case atlanta
     
+    // idaho
+    case boise
+    
     // massachusetts
     case boston
     
@@ -64,20 +67,23 @@ public extension Market {
     var stateAbbreviation: String? {
         var state: State? {
             switch self {
+            case .birmingham, .huntsville:
+                return .alabama
+                
             case .atlanta:
                 return .georgia
                 
-            case .birmingham, .huntsville:
-                return .alabama
+            case .boise:
+                return .idaho
                 
             case .boston:
                 return .massachusetts
                 
-            case .chattanooga, .knoxville, .memphis, .nashville:
-                return .tennessee
-                
             case .philadelphia:
                 return .pennsylvania
+                
+            case .chattanooga, .knoxville, .memphis, .nashville:
+                return .tennessee
                 
             case .seattle:
                 return .washington

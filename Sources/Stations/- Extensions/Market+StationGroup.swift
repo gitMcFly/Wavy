@@ -26,6 +26,9 @@ internal extension Market {
             
         case .birmingham:
             return Alabama.Birmingham()
+            
+        case .boise:
+            return Idaho.Boise()
         
         case .boston:
             return Massachusetts.Boston()
