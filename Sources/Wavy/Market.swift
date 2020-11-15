@@ -14,6 +14,9 @@ public enum Market: String, Hashable, CaseIterable {
     case huntsville
     case troyAL
     
+    // florida
+    case miami
+    
     // georgia
     case atlanta
     
@@ -69,6 +72,9 @@ public extension Market {
             switch self {
             case .birmingham, .huntsville:
                 return .alabama
+                
+            case .miami:
+                return .florida
                 
             case .atlanta:
                 return .georgia
