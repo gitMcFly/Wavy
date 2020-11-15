@@ -13,6 +13,7 @@ public enum Network: Hashable {
     case nashFM
 
     // news
+    case abcNews
     case apm // american public media
     case americanUrbanRadio
     case associatedPress
@@ -20,7 +21,12 @@ public enum Network: Hashable {
     case bloomberg
     case foxNews
     case npr
+    case prn // premier networks
     case prx // public radio exchange
+    case westwoodOne
+    
+    // weather
+    case accuweather
     
     // religious
     case americanFamilyRadio
@@ -29,6 +35,7 @@ public enum Network: Hashable {
     case wayFM
     
     // sports
+    case cbsSportsRadio
     case espnRadio
     case foxSports
     
