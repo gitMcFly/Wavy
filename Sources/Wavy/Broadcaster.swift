@@ -17,6 +17,7 @@ public enum Broadcaster {
     case iHeartMedia
     case loudMedia
     case midwestCommunications
+    case relevantRadio
     case salemMediaGroup
     case summitMedia
     
