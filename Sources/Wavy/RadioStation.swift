@@ -104,7 +104,12 @@ public extension RadioStation {
         return new
     }
     
+    @available(*, deprecated)
     func callLetterPosition(_ position: DisplayPosition) -> Self {
+        self.callLetters(position)
+    }
+    
+    func callLetters(_ position: DisplayPosition) -> Self {
         var new = self
         new.properties.callLetterPosition = position
         return new
