@@ -14,7 +14,7 @@ public struct RadioStation: Hashable {
         var ignoreFrequencyInTitle = false
         var ignoreMarketInTitle = false
         
-        var callLettersFollowFrequency = false
+        var callLetterPosition: DisplayPosition?
         var displayCallLetters: String?
         
         var frequencyDesignatorPosition = DisplayPosition.trailing
@@ -103,10 +103,17 @@ public extension RadioStation {
         new.properties.ignoreFrequencyInTitle = true
         return new
     }
-        
+    
+    func callLetterPosition(_ position: DisplayPosition) -> Self {
+        var new = self
+        new.properties.callLetterPosition = position
+        return new
+    }
+    
+    @available(*, deprecated)
     func callLettersFollowFrequency() -> Self {
         var new = self
-        new.properties.callLettersFollowFrequency = true
+        new.properties.callLetterPosition = .trailing
         return new
     }
     
@@ -208,7 +215,7 @@ extension RadioStation {
         case _ where properties.ignoreFrequencyInTitle:
             return title.text ?? callLetters
             
-        case .callLetters where properties.callLettersFollowFrequency:
+        case .callLetters where properties.callLetterPosition == .trailing:
             return [frequency, callLetters]
                 .compactMap { $0 }
                 .joined(separator: " ")
@@ -222,7 +229,7 @@ extension RadioStation {
             if let joinedPrefix = title.droppingSuffix("-") {
                 return joinedPrefix + (frequency ?? "")
                 
-            } else if properties.callLettersFollowFrequency {
+            } else if properties.callLetterPosition == .trailing {
                 return [title, frequency, callLetters]
                     .compactMap { $0 }
                     .joined(separator: " ")
@@ -234,7 +241,12 @@ extension RadioStation {
                 
             }
             
-        case .suffix(let title) where properties.callLettersFollowFrequency:
+        case .suffix(let title) where properties.callLetterPosition == .leading:
+            return [callLetters, frequency, title]
+                .compactMap { $0 }
+                .joined(separator: " ")
+            
+        case .suffix(let title) where properties.callLetterPosition == .trailing:
             return [frequency, title, callLetters]
                 .compactMap { $0 }
                 .joined(separator: " ")
