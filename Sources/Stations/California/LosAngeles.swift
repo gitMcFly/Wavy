@@ -13,6 +13,13 @@ extension California {
             
             // fm stations
             
+            Station("kali-fm", "Radio VNCR", .fm(106, 3))
+                .url("https://nguoiviet.tv/vncr/")
+            
+            Station("ksse", "Radio José", .fm(107, 1))
+                //.broadcastCity("Arcadia")
+                .url(authority: "joseradio.com")
+            
             Station("klve", .fm(107, 5), "K-LOVE")
                 .slogan("Vive Tu Música")
                 .url("https://www.univision.com/los-angeles/klve/")
