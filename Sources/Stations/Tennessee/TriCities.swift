@@ -44,7 +44,7 @@ extension Tennessee {
             
             Station("wvek", "Classic Hits", .fm(102, 7))
                 .frequencyDesignator(.hidden)
-                .callLettersFollowFrequency()
+                .callLetters(.trailing)
                 .url(authority: "classichits1027.com")
             
             Station("wxbq", .fm(96, 9))

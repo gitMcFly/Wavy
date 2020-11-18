@@ -25,7 +25,7 @@ extension Georgia {
                 .url(authority: "wrfg.org")
             
             Station("wabe", .fm(90, 1))
-                .callLettersFollowFrequency()
+                .callLetters(.trailing)
                 .url(authority: "wabe.org")
             
             Station("wrek", .fm(91, 1))
@@ -94,7 +94,7 @@ extension Georgia {
             Station("waok", "News & Talk", .am(1380))
                 .url(authority: "waok.radio.com")
                 .frequencyDesignator(.hidden)
-                .callLettersFollowFrequency()
+                .callLetters(.trailing)
             
             Station("wyze", .am(1480))
                 .slogan("A Voice Changing The World")

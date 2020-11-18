@@ -71,7 +71,7 @@ extension Tennessee {
                 .owner(.iHeartMedia)
             
             Station("wrbo", .fm(103, 5))
-                .callLettersFollowFrequency()
+                .callLetters(.trailing)
                 .url(authority: "1035wrbo.com", useHTTPS: false)
                 .owner(.cumulusMedia)
             

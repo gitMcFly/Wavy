@@ -26,7 +26,7 @@ extension Tennessee {
                 .url(authority: "991thesportsanimal.com")
             
             Station("wuot", .fm(91, 9))
-                .callLettersFollowFrequency()
+                .callLetters(.trailing)
                 .url(authority: "wuot.org")
             
             Station("wetr", "Talk Radio", .fm(92, 3))
@@ -36,7 +36,7 @@ extension Tennessee {
             
             Station("wnox", .fm(93, 1))
                 .frequencyDesignator(.hidden)
-                .callLettersFollowFrequency()
+                .callLetters(.trailing)
                 .url(authority: "931wnox.com")
                 .owner(.summitMedia)
             
@@ -100,7 +100,7 @@ extension Tennessee {
                 .owner(.loudMedia)
             
             Station("wkce", .fm(105, 1))
-                .callLettersFollowFrequency()
+                .callLetters(.trailing)
                 .slogan("mid century radio")
                 .url(authority: "wkceradio.com")
                 .owner(.loudMedia)

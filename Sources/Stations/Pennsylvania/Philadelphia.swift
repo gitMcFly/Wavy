@@ -20,7 +20,7 @@ extension Pennsylvania {
             
             Station("wmgk", "Classic Rock", .fm(102, 9))
                 .frequencyDesignator(.hidden)
-                .callLettersFollowFrequency()
+                .callLetters(.trailing)
                 .displayCallLetters("mgk")
                 .url(authority: "wmgk.com")
             
