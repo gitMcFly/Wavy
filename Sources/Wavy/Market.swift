@@ -15,6 +15,9 @@ public enum Market: String, Hashable, CaseIterable {
     case huntsville
     case troyAL
     
+    // california
+    case losAngeles
+    
     // florida
     case miami
     

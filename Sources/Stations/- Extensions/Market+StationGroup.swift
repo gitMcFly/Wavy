@@ -36,6 +36,9 @@ internal extension Market {
         case .chattanooga:
             return Tennessee.Chattanooga()
             
+        case .losAngeles:
+            return California.LosAngeles()
+            
         case .miami:
             return Florida.Miami()
             
