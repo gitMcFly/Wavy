@@ -54,6 +54,9 @@ internal extension Market {
         case .nashville:
             return Tennessee.Nashville()
             
+        case .newYork:
+            return NewYork.NYC()
+            
         case .philadelphia:
             return Pennsylvania.Philadelphia()
             
