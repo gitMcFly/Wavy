@@ -20,5 +20,6 @@ public enum Broadcaster {
     case relevantRadio
     case salemMediaGroup
     case summitMedia
+    case univision
     
 }
