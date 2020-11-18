@@ -13,6 +13,8 @@ extension California {
             
             // fm stations
             
+            Station("krdc", "Radio Disney Country", .fm(99, 1))
+            
             Station("kali-fm", "Radio VNCR", .fm(106, 3))
                 .url("https://nguoiviet.tv/vncr/")
             
