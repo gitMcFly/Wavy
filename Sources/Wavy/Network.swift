@@ -19,6 +19,7 @@ public enum Network: Hashable {
     case associatedPress
     case blackInformation
     case bloomberg
+    case cbsNewsRadio
     case foxNews
     case npr
     case prn // premier networks
@@ -27,6 +28,7 @@ public enum Network: Hashable {
     
     // weather
     case accuweather
+    case theWeatherChannel
     
     // religious
     case americanFamilyRadio
