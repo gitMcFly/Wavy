@@ -5,6 +5,7 @@
 //  Created by Christopher Weems on 11/9/20.
 //
 
+import Algorithms
 import Foundation
 import Statehood
 
@@ -46,21 +47,16 @@ public enum Market: String, Hashable, CaseIterable {
 
 public extension Market {
     var city: String {
-        let descriptionTitle: Substring
+        var components = rawValue.chunked { $0.isUppercase || $1.isLowercase }
         
-        switch self {
-        case .triCitiesTN:
-            return "Tri-Cities"
-            
-        case _ where rawValue.suffix(2).allSatisfy(\.isUppercase):
-            descriptionTitle = rawValue.prefix(upTo: rawValue.index(rawValue.endIndex, offsetBy: -2))
-            
-        default:
-            descriptionTitle = Substring(rawValue)
+        if components.last?.allSatisfy(\.isUppercase) == true {
+            components.removeLast()
             
         }
         
-        return descriptionTitle.capitalized
+        let joiner = self.isHyphenatedName ? "-" : " "
+        
+        return components.map(\.capitalized).joined(separator: joiner)
     }
     
     func withStateAbbreviation() -> (city: String, stateAbbreviation: String?) {
@@ -91,6 +87,9 @@ public extension Market {
             case .chattanooga, .knoxville, .memphis, .nashville:
                 return .tennessee
                 
+            case .losAngeles:
+                return .california
+                
             case .seattle:
                 return .washington
                 
@@ -110,6 +109,13 @@ public extension Market {
             return nil
             
         }
+    }
+    
+}
+
+fileprivate extension Market {
+    var isHyphenatedName: Bool {
+        [.triCitiesTN].contains(self)
     }
     
 }
