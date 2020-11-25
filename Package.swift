@@ -19,8 +19,10 @@ let package = Package(
             targets: ["Wavy", "Stations"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/christopherweems/unstandard.git", .upToNextMajor(from: "0.0.6")),
+        .package(url: "https://github.com/docmcgit/MixedGroup", .upToNextMajor(from: "0.0.1")),
+        .package(url: "https://github.com/christopherweems/Resultto", .upToNextMajor(from: "0.0.1")),
         .package(url: "https://github.com/christopherweems/Statehood.git", .upToNextMajor(from: "0.0.1")),
+        .package(url: "https://github.com/christopherweems/unstandard.git", .upToNextMajor(from: "0.0.6")),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -28,8 +30,10 @@ let package = Package(
         .target(
             name: "Wavy",
             dependencies: [
-                .product(name: "unstandard", package: "unstandard"),
+                .product(name: "MixedGroup", package: "MixedGroup"),
+                .product(name: "Resultto", package: "Resultto"),
                 .product(name: "Statehood", package: "Statehood"),
+                .product(name: "unstandard", package: "unstandard"),
             ]),
         .target(
             name: "Stations",
