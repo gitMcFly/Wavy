@@ -7,6 +7,7 @@
 
 import unstandard
 
+@available(*, deprecated)
 public struct StationReader {
     let station: RadioStation
     
@@ -17,6 +18,7 @@ public struct StationReader {
     
 }
 
+@available(*, deprecated)
 public extension StationReader {
     var title: String {
         station.formattedTitle
@@ -48,6 +50,7 @@ public extension StationReader {
     
 }
 
+@available(*, deprecated)
 public extension StationReader {
     var sortFrequency: String? {
         switch station.frequency {
