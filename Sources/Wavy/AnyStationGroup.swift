@@ -18,7 +18,7 @@ public struct AnyStationGroup: StationGroup {
                 return stations()
                     .map {
                         var new = $0
-                        new.market = market
+                        new[\.market] = market
                         return new
                     }
                     .asSet()

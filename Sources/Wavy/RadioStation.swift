@@ -10,7 +10,16 @@ import Statehood
 import unstandard
 
 public struct RadioStation: Hashable {
-    internal struct Properties: Hashable {
+    public struct Properties: Hashable {
+        public var title: Title
+        public var frequency: Frequency?
+        
+        public var callLetters: String
+        
+        var slogan: String?
+        
+        var market: Market?
+        
         var ignoreFrequencyInTitle = false
         var ignoreMarketInTitle = false
         
@@ -22,50 +31,65 @@ public struct RadioStation: Hashable {
         var broadcastCity: String? = nil
         var broadcastState: State? = nil
         
+        var networkAffiliations = Set<Network>()
+        var owners = Set<Broadcaster>()
+        
+        public var webURL: WebURL?
+        
     }
     
-    internal var properties = Properties()
-    
-    public let callLetters: String
-    
-    var title: Title
-    var slogan: String? = nil
-    
-    public internal(set) var networkAffiliations = Set<Network>()
-    public internal(set) var owners = Set<Broadcaster>()
-    
-    public private(set) var webURL: WebURL?
-    
-    let frequency: Frequency?
-    
-    public internal(set) var market: Market?
+    internal var properties: Properties
     
     
     // MARK: - Initializers
     
     public init(_ callLetters: String, _ titlePrefix: String, _ frequency: Frequency? = nil, market: Market? = nil) {
-        self.callLetters = callLetters.uppercased()
-        self.title = .prefix(titlePrefix)
-        self.frequency = frequency
-        self.market = market
+        self.properties = Properties(title: .prefix(titlePrefix), callLetters: callLetters.uppercased())
+        self.properties.frequency = frequency
+        self.properties.market = market
         
     }
     
     public init(_ callLetters: String, _ frequency: Frequency, _ titleSuffix: String, market: Market? = nil) {
-        self.callLetters = callLetters.uppercased()
-        self.title = .suffix(titleSuffix)
-        self.frequency = frequency
-        self.market = market
+        self.properties = Properties(title: .suffix(titleSuffix), callLetters: callLetters.uppercased())
+        self.properties.frequency = frequency
+        self.properties.market = market
         
     }
     
     public init(_ callLetters: String, _ frequency: Frequency? = nil, market: Market? = nil) {
-        self.callLetters = callLetters.uppercased()
-        self.title = .callLetters
-        self.frequency = frequency
-        self.market = market
+        self.properties = Properties(title: .callLetters, callLetters: callLetters.uppercased())
+        self.properties.frequency = frequency
+        self.properties.market = market
         
     }
+    
+}
+
+extension RadioStation {
+    public subscript<V>(propertyKeyPath: KeyPath<Properties, V>) -> V {
+        properties[keyPath: propertyKeyPath]
+    }
+    
+    internal subscript<V>(propertyKeyPath: WritableKeyPath<Properties, V>) -> V {
+        get { properties[keyPath: propertyKeyPath] }
+        set { properties[keyPath: propertyKeyPath] = newValue }
+    }
+    
+}
+
+
+// MARK: - Deprecated Property Accessors
+
+@available(*, deprecated)
+public extension RadioStation {
+    var callLetters: String { properties.callLetters }
+    var slogan: String? { properties.slogan }
+    var networkAffiliations: Set<Network> { properties.networkAffiliations }
+    var owners: Set<Broadcaster> { properties.owners }
+    var webURL: WebURL? { properties.webURL }
+    var frequency: Frequency? { properties.frequency }
+    var market: Market? { properties.market }
     
 }
 
@@ -75,13 +99,13 @@ public struct RadioStation: Hashable {
 public extension RadioStation {
     func title(_ title: String) -> Self {
         var new = self
-        new.title = new.title.replacingText(with: title)
+        new[\.title] = new[\.title].replacingText(with: title)
         return new
     }
     
     func slogan(_ slogan: String) -> Self {
         var new = self
-        new.slogan = slogan
+        new[\.slogan] = slogan
         return new
     }
     
@@ -124,19 +148,19 @@ public extension RadioStation {
     
     func market(_ market: Market) -> Self {
         var new = self
-        new.market = market
+        new[\.market] = market
         return new
     }
     
     func url(authority: String, useHTTPS: Bool = true) -> Self {
         var new = self
-        new.webURL = .authority(authority, useHTTPS: useHTTPS)
+        new[\.webURL] = .authority(authority, useHTTPS: useHTTPS)
         return new
     }
     
     func url(_ webPage: String) -> Self {
         var new = self
-        new.webURL = .page(webPage)
+        new[\.webURL] = .page(webPage)
         return new
     }
     
@@ -152,7 +176,7 @@ public extension RadioStation {
                                                day: endDate.day)
         
         if let date = endDateComponents.date, .now() < date {
-            new.title = new.title.replacingText(with: title)
+            new.properties.title = new.properties.title.replacingText(with: title)
             
         } else {
             assertionFailure("Temporary title no longer valid: \(title)")
@@ -183,32 +207,49 @@ public extension RadioStation {
 public extension RadioStation {
     func member(of networks: Network...) -> Self {
         var new = self
-        new.networkAffiliations.formUnion(networks)
+        new[\.networkAffiliations].formUnion(networks)
         return new
     }
     
     func owner(_ owners: Broadcaster...) -> Self {
         var new = self
-        new.owners.formUnion(owners)
+        new[\.owners].formUnion(owners)
         return new
     }
+    
 }
 
 
 //
 
+@available(*, deprecated)
 extension RadioStation {
     public var formattedTitle: String {
-        let frequency = self.frequency?
-            .description(frequencyDesignatorPosition: properties.frequencyDesignatorPosition)
+        properties.formattedTitle
+    }
+    
+    public func formattedTitle(includeMarket: Bool) -> String {
+        guard includeMarket && !properties.ignoreMarketInTitle else { return formattedTitle }
+        let broadcastCity = properties.broadcastCity ?? market?.city
+        guard let marketSuffix = broadcastCity?.wrap({ ", \($0)" }) else { return formattedTitle }
         
-        let callLetters = properties.displayCallLetters ?? self.callLetters
+        return formattedTitle + marketSuffix
+    }
+    
+}
+
+extension RadioStation.Properties {
+    public var formattedTitle: String {
+        let frequency = self.frequency?
+            .description(frequencyDesignatorPosition: frequencyDesignatorPosition)
+        
+        let callLetters = displayCallLetters ?? self.callLetters
         
         switch title {
-        case _ where properties.ignoreFrequencyInTitle:
+        case _ where ignoreFrequencyInTitle:
             return title.text ?? callLetters
             
-        case .callLetters where properties.callLetterPosition == .trailing:
+        case .callLetters where callLetterPosition == .trailing:
             return [frequency, callLetters]
                 .compactMap { $0 }
                 .joined(separator: " ")
@@ -222,7 +263,7 @@ extension RadioStation {
             if let joinedPrefix = title.droppingSuffix("-") {
                 return joinedPrefix + (frequency ?? "")
                 
-            } else if properties.callLetterPosition == .trailing {
+            } else if callLetterPosition == .trailing {
                 return [title, frequency, callLetters]
                     .compactMap { $0 }
                     .joined(separator: " ")
@@ -234,12 +275,12 @@ extension RadioStation {
                 
             }
             
-        case .suffix(let title) where properties.callLetterPosition == .leading:
+        case .suffix(let title) where callLetterPosition == .leading:
             return [callLetters, frequency, title]
                 .compactMap { $0 }
                 .joined(separator: " ")
             
-        case .suffix(let title) where properties.callLetterPosition == .trailing:
+        case .suffix(let title) where callLetterPosition == .trailing:
             return [frequency, title, callLetters]
                 .compactMap { $0 }
                 .joined(separator: " ")
@@ -250,15 +291,6 @@ extension RadioStation {
                 .joined(separator: " ")
             
         }
-    }
-    
-    @available(*, deprecated)
-    public func formattedTitle(includeMarket: Bool) -> String {
-        guard includeMarket && !properties.ignoreMarketInTitle else { return formattedTitle }
-        let broadcastCity = properties.broadcastCity ?? market?.city
-        guard let marketSuffix = broadcastCity?.wrap({ ", \($0)" }) else { return formattedTitle }
-        
-        return formattedTitle + marketSuffix
     }
     
 }
@@ -315,3 +347,64 @@ extension RadioStation.Title {
     }
     
 }
+
+
+// MARK: -
+
+public extension RadioStation.Properties {
+    var subtitle: String? {
+        guard !ignoreMarketInTitle else { return nil }
+        guard let city = broadcastCity ?? market?.city else {
+            return nil
+        }
+        guard let state = broadcastState?.uspsAbbreviation ?? market?.stateAbbreviation else {
+            return nil
+        }
+        
+        return Array {
+            [city, state]
+                .compactMap { $0 }
+                .joined(separator: ", ")
+            
+            if !includesFrequencyInTitle {
+                frequency?.description
+                
+            }
+            
+        }
+        .compactMap { $0 }
+        .joined(separator: " | ")
+    }
+    
+    var sortFrequency: String? {
+        switch frequency {
+        case let .fm(mhz, dMHz):
+            return "F-\(mhz).\(dMHz)"
+            
+        case let .am(khz):
+            return "Z-\(khz)"
+            
+        case .none:
+            return nil
+            
+        }
+    }
+    
+    var sortIdentifier: String {
+        Array {
+            market?.stateAbbreviation ?? broadcastState?.uspsAbbreviation
+            market?.city ?? broadcastCity
+            sortFrequency
+            callLetters
+            
+        }
+        .compactMap { $0 }
+        .joined(separator: "-")
+    }
+    
+    var includesFrequencyInTitle: Bool {
+        !ignoreFrequencyInTitle
+    }
+    
+}
+
