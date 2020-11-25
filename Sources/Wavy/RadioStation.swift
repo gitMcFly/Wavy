@@ -309,7 +309,7 @@ public extension RadioStation {
         case callLetters
         
     }
-        
+    
 }
 
 extension RadioStation {
@@ -340,13 +340,13 @@ extension RadioStation.Title {
         switch self {
         case .callLetters:
             return nil
-        
+            
         case let .prefix(text):
             return text
-        
+            
         case let .suffix(text):
             return text
-        
+            
         }
     }
     
@@ -358,9 +358,7 @@ extension RadioStation.Title {
 public extension RadioStation.Properties {
     var subtitle: String? {
         guard !ignoreMarketInTitle else { return nil }
-        guard let city = broadcastCity ?? market?.city else {
-            return nil
-        }
+        guard let city = broadcastCity ?? market?.city else { return nil }
         guard let state = broadcastState?.uspsAbbreviation ?? market?.stateAbbreviation else {
             return nil
         }
