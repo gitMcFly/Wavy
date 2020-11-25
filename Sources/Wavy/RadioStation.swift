@@ -11,7 +11,7 @@ import unstandard
 
 public struct RadioStation: Hashable {
     public struct Properties: Hashable {
-        public var title: Title
+        var title: Title
         public var frequency: Frequency?
         
         public var callLetters: String
@@ -411,4 +411,3 @@ public extension RadioStation.Properties {
     }
     
 }
-
