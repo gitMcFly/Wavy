@@ -229,17 +229,13 @@ extension RadioStation {
     }
     
     public func formattedTitle(includeMarket: Bool) -> String {
-        guard includeMarket && !properties.ignoreMarketInTitle else { return formattedTitle }
-        let broadcastCity = properties.broadcastCity ?? market?.city
-        guard let marketSuffix = broadcastCity?.wrap({ ", \($0)" }) else { return formattedTitle }
-        
-        return formattedTitle + marketSuffix
+        properties.formattedTitle(includeMarket: includeMarket)
     }
     
 }
 
-extension RadioStation.Properties {
-    public var formattedTitle: String {
+public extension RadioStation.Properties {
+    var formattedTitle: String {
         let frequency = self.frequency?
             .description(frequencyDesignatorPosition: frequencyDesignatorPosition)
         
@@ -291,6 +287,14 @@ extension RadioStation.Properties {
                 .joined(separator: " ")
             
         }
+    }
+    
+    func formattedTitle(includeMarket: Bool) -> String {
+        guard includeMarket && !ignoreMarketInTitle else { return formattedTitle }
+        let broadcastCity = self.broadcastCity ?? market?.city
+        guard let marketSuffix = broadcastCity?.wrap({ ", \($0)" }) else { return formattedTitle }
+        
+        return formattedTitle + marketSuffix
     }
     
 }
