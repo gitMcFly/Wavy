@@ -359,7 +359,7 @@ public extension RadioStation.Properties {
     var subtitle: String? {
         guard !ignoreMarketInTitle else { return nil }
         guard let city = broadcastCity ?? market?.city else { return nil }
-        guard let state = broadcastState?.uspsAbbreviation ?? market?.stateAbbreviation else {
+        guard let state = broadcastState?.uspsAbbreviation ?? market?.state.uspsAbbreviation else {
             return nil
         }
         
@@ -394,7 +394,7 @@ public extension RadioStation.Properties {
     
     var sortIdentifier: String {
         Array {
-            market?.stateAbbreviation ?? broadcastState?.uspsAbbreviation
+            market?.state.uspsAbbreviation ?? broadcastState?.uspsAbbreviation
             market?.city ?? broadcastCity
             sortFrequency
             callLetters
