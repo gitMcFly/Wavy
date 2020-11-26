@@ -52,17 +52,16 @@ public enum Market: String, Hashable, CaseIterable {
 }
 
 public extension Market {
+    private var isHyphenatedCity: Bool {
+        [.triCitiesTN].contains(self)
+    }
+    
     var city: String {
-        var components = rawValue.chunked { $0.isUppercase || $1.isLowercase }
-        
-        if components.last?.allSatisfy(\.isUppercase) == true {
-            components.removeLast()
-            
-        }
-        
-        let joiner = self.isHyphenatedName ? "-" : " "
-        
-        return components.map(\.capitalized).joined(separator: joiner)
+        self.rawValue
+            .chunked { $0.isUppercase || $1.isLowercase }
+            .wrap { $0.last?.allSatisfy(\.isUppercase) == true ? $0.dropLast() : $0 }
+            .map(\.capitalized)
+            .joined(separator: isHyphenatedCity ? "-" : " ")
     }
     
     var state: State {
@@ -101,13 +100,6 @@ public extension Market {
             return .virginia
             
         }
-    }
-    
-}
-
-fileprivate extension Market {
-    var isHyphenatedName: Bool {
-        [.triCitiesTN].contains(self)
     }
     
 }
