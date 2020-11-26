@@ -5,8 +5,9 @@
 //  Created by Christopher Weems on 11/9/20.
 //
 
-import Foundation
+@_exported import enum StationGroup.Market
 import StationGroup
+import Foundation
 import unstandard
 
 extension Market: StationGroup {
