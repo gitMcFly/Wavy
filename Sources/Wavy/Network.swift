@@ -11,7 +11,7 @@ public enum Network: Hashable {
     
     // music
     case nashFM
-
+    
     // news
     case abcNews
     case apm // american public media
