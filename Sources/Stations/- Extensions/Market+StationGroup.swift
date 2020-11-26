@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Wavy
+import StationGroup
 import unstandard
 
 extension Market: StationGroup {
