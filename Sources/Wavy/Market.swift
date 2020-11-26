@@ -103,16 +103,6 @@ public extension Market {
         }
     }
     
-    @available(*, deprecated)
-    func withStateAbbreviation() -> (city: String, stateAbbreviation: String?) {
-        (city, stateAbbreviation)
-    }
-    
-    @available(*, deprecated)
-    var stateAbbreviation: String {
-        state.uspsAbbreviation
-    }
-    
 }
 
 fileprivate extension Market {
