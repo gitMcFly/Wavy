@@ -15,8 +15,8 @@ let package = Package(
             name: "StationGroup",
             targets: ["StationGroup"]),
         .library(
-            name: "Stations",
-            targets: ["StationGroup", "Stations"]),
+            name: "Wavy",
+            targets: ["StationGroup", "Wavy"]),
     ],
     dependencies: [
         .package(url: "https://github.com/docmcgit/MixedGroup", .upToNextMajor(from: "0.0.1")),
@@ -36,7 +36,7 @@ let package = Package(
                 .product(name: "unstandard", package: "unstandard"),
             ]),
         .target(
-            name: "Stations",
+            name: "Wavy",
             dependencies: [
                 "StationGroup",
                 .product(name: "unstandard", package: "unstandard"),
