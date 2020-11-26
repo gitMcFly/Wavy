@@ -2,12 +2,57 @@
   "object": {
     "pins": [
       {
+        "package": "MixedGroup",
+        "repositoryURL": "https://github.com/docmcgit/MixedGroup",
+        "state": {
+          "branch": null,
+          "revision": "3234f28234bb569effcfb665ef19e5f1d2b65dd1",
+          "version": "0.0.1"
+        }
+      },
+      {
+        "package": "Resultto",
+        "repositoryURL": "https://github.com/christopherweems/Resultto",
+        "state": {
+          "branch": null,
+          "revision": "33595e626d4cccdf61a375f0863803937e551c6f",
+          "version": "0.0.1"
+        }
+      },
+      {
+        "package": "Statehood",
+        "repositoryURL": "https://github.com/christopherweems/Statehood.git",
+        "state": {
+          "branch": null,
+          "revision": "af652ddf62ddfab0d571f7b7dd658eecfc70d522",
+          "version": "0.0.1"
+        }
+      },
+      {
+        "package": "swift-algorithms",
+        "repositoryURL": "https://github.com/apple/swift-algorithms",
+        "state": {
+          "branch": null,
+          "revision": "bb3bafeca0e164ece3403a9de646b7d38c07dd49",
+          "version": "0.0.2"
+        }
+      },
+      {
+        "package": "swift-numerics",
+        "repositoryURL": "https://github.com/apple/swift-numerics",
+        "state": {
+          "branch": null,
+          "revision": "6b24333510e9044cf4716a07bed65eeed6bc6393",
+          "version": "0.0.8"
+        }
+      },
+      {
         "package": "unstandard",
         "repositoryURL": "https://github.com/christopherweems/unstandard.git",
         "state": {
-          "branch": "main",
-          "revision": "6283a463700163b7433f3da2dd91e6578d5f7c5e",
-          "version": null
+          "branch": null,
+          "revision": "b3acfdbb35ba86ad4b7024f6c0a62a3267e93208",
+          "version": "0.0.6"
         }
       }
     ]

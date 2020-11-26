@@ -20,7 +20,7 @@ extension Frequency: CustomStringConvertible {
     }
     
 }
- 
+
 extension Frequency {    
     @SingleResult public func description(frequencyDesignatorPosition: DisplayPosition) -> String {
         switch frequencyDesignatorPosition {

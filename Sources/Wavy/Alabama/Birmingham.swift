@@ -5,7 +5,7 @@
 //  Created by Christopher Weems on 11/11/20.
 //
 
-import Wavy
+import StationGroup
 
 extension Alabama {
     struct Birmingham: _StationGroup {

@@ -1,7 +1,7 @@
 import XCTest
 
-import WavyTests
+import StationGroup
 
 var tests = [XCTestCaseEntry]()
-tests += WavyTests.allTests()
+tests += StationGroupTests.allTests()
 XCTMain(tests)

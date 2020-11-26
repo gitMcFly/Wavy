@@ -1,14 +1,14 @@
 import XCTest
-@testable import Wavy
+@testable import StationGroup
 
-final class WavyTests: XCTestCase {
+final class StationGroupTests: XCTestCase {
     static var allTests = [
         ("testExample", testExample),
     ]
 
 }
 
-extension WavyTests {
+extension StationGroupTests {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
