@@ -21,7 +21,7 @@
       },
       {
         "package": "Statehood",
-        "repositoryURL": "https://github.com/christopherweems/Statehood.git",
+        "repositoryURL": "https://github.com/christopherweems/Statehood",
         "state": {
           "branch": null,
           "revision": "af652ddf62ddfab0d571f7b7dd658eecfc70d522",
@@ -48,7 +48,7 @@
       },
       {
         "package": "unstandard",
-        "repositoryURL": "https://github.com/christopherweems/unstandard.git",
+        "repositoryURL": "https://github.com/christopherweems/unstandard",
         "state": {
           "branch": null,
           "revision": "b3acfdbb35ba86ad4b7024f6c0a62a3267e93208",
