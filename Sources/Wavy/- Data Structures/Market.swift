@@ -22,6 +22,9 @@ extension Market: StationGroup {
 internal extension Market {
     var stationGroup: StationGroup {
         switch self {
+        case .annArbor:
+            return Michigan.AnnArbor()
+        
         case .atlanta:
             return Georgia.Atlanta()
             

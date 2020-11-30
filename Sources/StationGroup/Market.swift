@@ -30,6 +30,9 @@ public enum Market: String, Hashable, CaseIterable {
     // massachusetts
     case boston
     
+    // michigan
+    case annArbor
+    
     // new york
     case newYork
     
@@ -80,6 +83,9 @@ public extension Market {
             
         case .boston:
             return .massachusetts
+            
+        case .annArbor:
+            return .michigan
             
         case .philadelphia:
             return .pennsylvania
