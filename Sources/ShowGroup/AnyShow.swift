@@ -9,9 +9,9 @@ import StationGroup
 
 public struct AnyShow: Show, ExpressibleByStringLiteral {
     public struct Properties {
-        var title: String?
-        var network: Network?
-        var siteReference: SiteReference?
+        public var title: String?
+        public var network: Network?
+        public var siteReference: SiteReference?
         
     }
     
