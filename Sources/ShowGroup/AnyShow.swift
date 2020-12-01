@@ -15,18 +15,28 @@ public struct AnyShow: Show, ExpressibleByStringLiteral {
         
     }
     
-    internal var properties: Properties
+    internal var properties = Properties()
     
     public init<Other>(other: Other) where Other: Show {
-        properties = Properties()
         properties.title = other[\.title]
+        properties.network = other[\.network]
+        properties.siteReference = other[\.siteReference]
         
     }
     
     public init(stringLiteral value: StringLiteralType) {
-        properties = Properties(title: value)
+        properties.title = Self.title(for: value)
         
     }
     
 }
 
+
+// MARK: - 
+
+fileprivate extension AnyShow {
+    static func title(for stringLiteralValue: StringLiteralType) -> String {
+        stringLiteralValue
+    }
+    
+}
