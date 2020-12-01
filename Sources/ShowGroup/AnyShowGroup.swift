@@ -26,7 +26,7 @@ public struct AnyShowGroup: ShowGroup {
     internal var properties = Properties()
     
     public var body: AnyShowGroup {
-        self
+        return self
     }
     
     // MARK: - Initializers
