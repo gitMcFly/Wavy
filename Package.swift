@@ -34,6 +34,7 @@ let package = Package(
                 .product(name: "Resultto", package: "Resultto"),
                 .product(name: "Statehood", package: "Statehood"),
                 .product(name: "unstandard", package: "unstandard"),
+                "StationGroup",
             ]),
         .target(
             name: "StationGroup",
