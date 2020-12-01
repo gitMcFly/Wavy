@@ -22,7 +22,6 @@ public struct AnyShowGroup: ShowGroup {
         self
     }
     
-    
     // MARK: - Initializers
     
     public init<Subgroup>(subgroups: [Subgroup]) where Subgroup : ShowGroup {
