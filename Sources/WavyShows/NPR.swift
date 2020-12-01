@@ -10,6 +10,8 @@ import ShowGroup
 import unstandard
 
 public struct NPR: ShowGroup {
+    public static let network = Network.npr
+    
     public var body: AnyShowGroup {
         "All Things Considered"
         
