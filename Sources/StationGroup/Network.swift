@@ -41,4 +41,14 @@ public enum Network: Hashable {
     case espnRadio
     case foxSports
     
+    case unknown
+    
+}
+
+
+extension Network: ExpressibleByNilLiteral {
+    public init(nilLiteral: ()) {
+        self = .unknown
+    }
+    
 }
