@@ -28,6 +28,14 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
+            name: "ShowGroup",
+            dependencies: [
+                .product(name: "MixedGroup", package: "MixedGroup"),
+                .product(name: "Resultto", package: "Resultto"),
+                .product(name: "Statehood", package: "Statehood"),
+                .product(name: "unstandard", package: "unstandard"),
+            ]),
+        .target(
             name: "StationGroup",
             dependencies: [
                 .product(name: "MixedGroup", package: "MixedGroup"),
@@ -39,6 +47,13 @@ let package = Package(
             name: "Wavy",
             dependencies: [
                 "StationGroup",
+                .product(name: "unstandard", package: "unstandard"),
+            ]),
+        .target(
+            name: "WavyShows",
+            dependencies: [
+                "Wavy",
+                "ShowGroup",
                 .product(name: "unstandard", package: "unstandard"),
             ]),
         .testTarget(
