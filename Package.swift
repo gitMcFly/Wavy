@@ -19,7 +19,7 @@ let package = Package(
             targets: ["StationGroup", "Wavy"]),
         .library(
             name: "WavyShows",
-            targets: ["StationGroup", "WavyShows"]),
+            targets: ["ShowGroup", "WavyShows"]),
     ],
     dependencies: [
         .package(url: "https://github.com/docmcgit/MixedGroup", .upToNextMajor(from: "0.0.1")),
