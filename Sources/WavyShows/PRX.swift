@@ -8,7 +8,7 @@
 import ShowGroup
 
 struct PRX: ShowGroup {
-    let network = Network.prx
+    static let network = Network.prx
     
     var showGroupBody: some ShowGroup {
         "A Way With Words"
