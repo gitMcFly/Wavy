@@ -61,8 +61,14 @@ extension Network: ExpressibleByNilLiteral {
 }
 
 fileprivate extension String {
+    var allSameCase: Bool {
+        allSatisfy(\.isLowercase) || allSatisfy(\.isUppercase)
+    }
+    
     var fromCamelCase: String {
-        self.chunked { $0.isUppercase || $1.isLowercase || ($0.isNumber && $1.isNumber) }
+        guard !allSameCase else { return self.uppercased() }
+        
+        return self.chunked { $0.isUppercase || $1.isLowercase || ($0.isNumber && $1.isNumber) }
             .map { $0.allSatisfy(\.isUppercase) ? String($0) : $0.capitalized }
             .joined(separator: " ")
     }
