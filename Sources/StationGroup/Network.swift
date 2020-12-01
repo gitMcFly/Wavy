@@ -5,6 +5,7 @@
 //  Created by Christopher Weems on 11/10/20.
 //
 
+import Algorithms
 import Foundation
 
 public enum Network: Hashable {
@@ -45,10 +46,25 @@ public enum Network: Hashable {
     
 }
 
+public extension Network {
+    func formattedTitle(_ locale: Locale = .current) -> String {
+        "\(self)".fromCamelCase
+    }
+    
+}
 
 extension Network: ExpressibleByNilLiteral {
     public init(nilLiteral: ()) {
         self = .unknown
+    }
+    
+}
+
+fileprivate extension String {
+    var fromCamelCase: String {
+        self.chunked { $0.isUppercase || $1.isLowercase || ($0.isNumber && $1.isNumber) }
+            .map { $0.allSatisfy(\.isUppercase) ? String($0) : $0.capitalized }
+            .joined(separator: " ")
     }
     
 }
