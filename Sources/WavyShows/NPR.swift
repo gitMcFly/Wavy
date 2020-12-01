@@ -12,14 +12,16 @@ import unstandard
 public struct NPR: ShowGroup {
     public static let network = Network.npr
     
-    public var body: AnyShowGroup {
+    public var showGroupBody: some ShowGroup {
         "Morning Edition"
             .url("https://www.npr.org/programs/morning-edition/")
         
-        "Weekend Edition Saturday"
+        "Weekend Edition"
+            .subtitle("Saturday")
             .url("https://www.npr.org/programs/weekend-edition-saturday/")
         
-        "Weekend Edition Sunday"
+        "Weekend Edition"
+            .subtitle("Sunday")
             .url("https://www.npr.org/programs/weekend-edition-sunday/")
         
         "All Things Considered"
@@ -35,5 +37,7 @@ public struct NPR: ShowGroup {
             .url("https://www.wbur.org/hereandnow")
         
     }
+    
+    public init() { }
     
 }

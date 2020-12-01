@@ -5,6 +5,7 @@
 //  Created by Christopher Weems on 11/30/20.
 //
 
+import MixedGroup
 @_exported import enum StationGroup.Network
 import unstandard
 
@@ -25,15 +26,23 @@ public struct AnyShowGroup: ShowGroup {
     
     internal var properties = Properties()
     
-    public var body: AnyShowGroup {
+    public var showGroupBody: some ShowGroup {
         return self
     }
+    
     
     // MARK: - Initializers
     
     public init<Subgroup>(subgroups: [Subgroup]) where Subgroup : ShowGroup {
-        properties.contents = .subgroups(subgroups.map(AnyShowGroup.init(other:)))
+        let contents = subgroups.map { $0[\.contents] }
         
+        if contents.allSatisfy(\.isSolo) {
+            properties.contents = .shows(contents.flatMap(\.shows))
+            
+        } else {
+            properties.contents = .subgroups(subgroups.map(AnyShowGroup.init(other:)))
+            
+        }
     }
     
     public init<Subgroup>(other: Subgroup) where Subgroup : ShowGroup {
@@ -55,6 +64,11 @@ public struct AnyShowGroup: ShowGroup {
 public extension AnyShowGroup.Contents {
     static func solo<Solo>(_ show: Solo) -> Self where Solo: Show {
         Self.solo(AnyShow(other: show))
+    }
+    
+    var isSolo: Bool {
+        guard case .solo = self else { return false }
+        return true
     }
     
     @SingleResult var shows: [AnyShow] {
@@ -80,8 +94,19 @@ public extension ShowGroup {
     typealias Contents = AnyShowGroup.Contents
     
     subscript(keyPath: KeyPath<Contents, [AnyShow]>) -> [AnyShow] {
-        guard let _self = self as? AnyShowGroup else { return [] }
-        return _self.properties.contents[keyPath: keyPath]
+        let properties: Properties
+        
+        if let _self = self as? AnyShowGroup {
+            properties = _self.properties
+            
+        } else if let _body = showGroupBody as? AnyShowGroup {
+            properties = _body.properties
+            
+        } else {
+            return []
+        }
+        
+        return properties.contents[keyPath: keyPath]
     }
     
 }

@@ -5,13 +5,14 @@
 //  Created by Christopher Weems on 11/30/20.
 //
 
+import MixedGroup
 import StationGroup
 
 public protocol ShowGroup {
     static var network: Network { get }
     
-    associatedtype Body: ShowGroup
-    @AnyShowGroupBuilder var body: Body { get }
+    associatedtype ShowGroupBody: ShowGroup
+    @AnyShowGroupBuilder var showGroupBody: ShowGroupBody { get }
     
     typealias Properties = AnyShowGroup.Properties
     
@@ -50,7 +51,7 @@ extension ShowGroup {
             switch propertyKeyPath {
             case \Properties.contents.shows:
                 let network = self[\.network]
-                return body[\.contents.shows].map { $0.network(network) } as! V
+                return showGroupBody[\.contents.shows].map { $0.network(network) } as! V
                 
             case \Properties.network:
                 return Self.network as! V
@@ -60,6 +61,14 @@ extension ShowGroup {
                 
             }
         }
+    }
+    
+}
+
+extension ForEach: ShowGroup where Data.Element : Show {
+    public var showGroupBody: some ShowGroup {
+        let subgroups = data.map { AnyShowGroup(show: $0) }
+        return AnyShowGroup(subgroups: subgroups)
     }
     
 }
