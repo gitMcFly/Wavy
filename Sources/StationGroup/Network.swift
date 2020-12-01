@@ -7,6 +7,7 @@
 
 import Algorithms
 import Foundation
+import unstandard
 
 public enum Network: CaseIterable, Hashable {
     
@@ -60,6 +61,8 @@ extension Network: ExpressibleByNilLiteral {
     }
     
 }
+
+extension Network: Iffable, Wrappable { }
 
 fileprivate extension String {
     var allSameCase: Bool {
