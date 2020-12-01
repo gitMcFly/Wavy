@@ -11,6 +11,7 @@ public struct AnyShow: Show, ExpressibleByStringLiteral {
     public struct Properties {
         var title: String?
         var network: Network?
+        var siteReference: SiteReference?
         
     }
     

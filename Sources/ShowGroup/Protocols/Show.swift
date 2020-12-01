@@ -47,7 +47,38 @@ public extension Show {
 // MARK: - Property Setters
 
 extension Show {
-    public func network(_ network: Network?) -> Show {
+    public func url(authority: String) -> some Show {
+        var new = self
+        new[\.siteReference] = .authority(authority)
+        return new
+    }
+    
+    public func url(_ pageURL: String) -> some Show {
+        var new = self
+        new[\.siteReference] = .pageURL(pageURL)
+        return new
+    }
+    
+}
+
+extension StringProtocol where Self == AnyShow.StringLiteralType {
+    public func url(authority: String) -> some Show {
+        self.as(AnyShow.self)
+            .url(authority: authority)
+    }
+    
+    public func url(_ pageURL: String) -> some Show {
+        self.as(AnyShow.self)
+            .url(pageURL)
+    }
+    
+}
+
+
+//
+
+extension Show {
+    public func network(_ network: Network?) -> some Show {
         var new = self
         new[\.network] = network
         return new
