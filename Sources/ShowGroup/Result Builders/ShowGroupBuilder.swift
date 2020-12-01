@@ -24,7 +24,7 @@ public extension ShowGroupBuilder where Group == AnyShowGroup {
 
 public extension ShowGroupBuilder {
     static func buildExpression<IndividualShow>(_ show: IndividualShow) -> Group where IndividualShow : Show {
-        Group(show: show)
+        .init(show: show)
     }
     
     static func buildExpression<Subgroup>(_ subgroup: Subgroup) -> Group where Subgroup : ShowGroup, Subgroup.Body == Group {
