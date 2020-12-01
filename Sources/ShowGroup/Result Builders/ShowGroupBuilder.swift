@@ -27,8 +27,8 @@ public extension ShowGroupBuilder {
         .init(show: show)
     }
     
-    static func buildExpression<Subgroup>(_ subgroup: Subgroup) -> Group where Subgroup : ShowGroup, Subgroup.Body == Group {
-        subgroup.body
+    static func buildExpression<Subgroup>(_ subgroup: Subgroup) -> Group where Subgroup : ShowGroup, Subgroup.ShowGroupBody == Group {
+        subgroup.showGroupBody
     }
     
 }
