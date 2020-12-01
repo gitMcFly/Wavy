@@ -47,8 +47,17 @@ public extension Show {
 // MARK: - Property Setters
 
 extension Show {
-    func network(_ network: Network?) -> Show {
+    public func network(_ network: Network?) -> Show {
         var new = self
+        new[\.network] = network
+        return new
+    }
+    
+}
+
+extension StringProtocol where Self == AnyShow.StringLiteralType {
+    public func network(_ network: Network?) -> some Show {
+        var new = AnyShow(stringLiteral: self)
         new[\.network] = network
         return new
     }
