@@ -75,7 +75,8 @@ extension StringProtocol where Self == AnyShow.StringLiteralType {
 }
 
 
-//
+// MARK: -
+
 
 extension Show {
     public func network(_ network: Network?) -> some Show {
@@ -91,6 +92,34 @@ extension StringProtocol where Self == AnyShow.StringLiteralType {
         var new = AnyShow(stringLiteral: self)
         new[\.network] = network
         return new
+    }
+    
+}
+
+
+// MARK: -
+
+extension Show {
+    public func title(_ title: String) -> some Show {
+        var new = self
+        new[\.title] = title
+        return new
+    }
+    
+    public func subtitle(_ subtitle: String) -> some Show {
+        let joinedTitle = [self[\.title], subtitle]
+            .compactMap { $0 }
+            .joined(separator: " ")
+        
+        return self.title(joinedTitle)
+    }
+    
+}
+
+extension StringProtocol where Self == AnyShow.StringLiteralType {
+    public func subtitle(_ subtitle: String) -> some Show {
+        self.as(AnyShow.self)
+            .subtitle(subtitle)
     }
     
 }
