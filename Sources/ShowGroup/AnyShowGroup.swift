@@ -88,12 +88,17 @@ public extension AnyShowGroup.Contents {
         }
     }
     
+    var subgroups: [AnyShowGroup] {
+        guard case .subgroups(let subgroups) = self else { fatalError() }
+        return subgroups
+    }
+    
 }
 
 public extension ShowGroup {
     typealias Contents = AnyShowGroup.Contents
     
-    subscript(keyPath: KeyPath<Contents, [AnyShow]>) -> [AnyShow] {
+    subscript<V>(keyPath: KeyPath<Contents, V>) -> V where V : ExpressibleByNilLiteral {
         let properties: Properties
         
         if let _self = self as? AnyShowGroup {
@@ -103,7 +108,8 @@ public extension ShowGroup {
             properties = _body.properties
             
         } else {
-            return []
+            return nil
+            
         }
         
         return properties.contents[keyPath: keyPath]
@@ -111,4 +117,24 @@ public extension ShowGroup {
     
 }
 
+
+//
+
 public typealias AnyShowGroupBuilder = ShowGroupBuilder<AnyShowGroup>
+
+public extension AnyShowGroupBuilder {
+    static func buildExpression<SG>(_ showGroup: SG) -> AnyShowGroup where SG : ShowGroup {
+        AnyShowGroup(other: showGroup)
+    }
+    
+}
+
+
+//
+
+extension Array: ExpressibleByNilLiteral {
+    public init(nilLiteral: ()) {
+        self = []
+    }
+    
+}
