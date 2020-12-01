@@ -7,10 +7,10 @@
 
 import ShowGroup
 
-struct PRX: ShowGroup {
-    static let network = Network.prx
+public struct PRX: ShowGroup {
+    public static let network = Network.prx
     
-    var showGroupBody: some ShowGroup {
+    public var showGroupBody: some ShowGroup {
         "A Way With Words"
             .url(authority: "waywordradio.org")
         
