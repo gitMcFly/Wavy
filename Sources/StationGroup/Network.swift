@@ -8,7 +8,7 @@
 import Algorithms
 import Foundation
 
-public enum Network: Hashable {
+public enum Network: CaseIterable, Hashable {
     
     // music
     case nashFM
@@ -42,6 +42,7 @@ public enum Network: Hashable {
     case espnRadio
     case foxSports
     
+    // unknown
     case unknown
     
 }
