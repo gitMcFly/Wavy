@@ -46,7 +46,10 @@ public struct AnyShowGroup: ShowGroup {
     }
     
     public init<Subgroup>(other: Subgroup) where Subgroup : ShowGroup {
-        properties.contents = Contents.shows(other[\.shows])
+        properties.network = (other[\.network] ?? type(of: other).network).if { $0 != .unknown }
+        properties.contents = other[\.shows]
+            .map { .init(other: $0.network(properties.network)) }
+            .wrap { .shows($0) }
         
     }
     
