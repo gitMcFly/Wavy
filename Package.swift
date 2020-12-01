@@ -58,6 +58,9 @@ let package = Package(
                 .product(name: "unstandard", package: "unstandard"),
             ]),
         .testTarget(
+            name: "ShowGroupTests",
+            dependencies: ["ShowGroup", "WavyShows"]),
+        .testTarget(
             name: "StationGroupTests",
             dependencies: ["StationGroup"]),
     ]
