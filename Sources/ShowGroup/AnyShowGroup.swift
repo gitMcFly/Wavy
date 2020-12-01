@@ -5,6 +5,7 @@
 //  Created by Christopher Weems on 11/30/20.
 //
 
+@_exported import enum StationGroup.Network
 import unstandard
 
 public struct AnyShowGroup: ShowGroup {
@@ -16,7 +17,13 @@ public struct AnyShowGroup: ShowGroup {
         
     }
     
-    fileprivate let contents: Contents
+    public struct Properties {
+        fileprivate(set) var contents = Contents.empty
+        var network: Network?
+        
+    }
+    
+    internal var properties = Properties()
     
     public var body: AnyShowGroup {
         self
@@ -25,22 +32,21 @@ public struct AnyShowGroup: ShowGroup {
     // MARK: - Initializers
     
     public init<Subgroup>(subgroups: [Subgroup]) where Subgroup : ShowGroup {
-        contents = .subgroups(subgroups.map(AnyShowGroup.init(other:)))
+        properties.contents = .subgroups(subgroups.map(AnyShowGroup.init(other:)))
         
     }
     
     public init<Subgroup>(other: Subgroup) where Subgroup : ShowGroup {
-        contents = .shows(other[\.shows])
+        properties.contents = Contents.shows(other[\.shows])
         
     }
     
     public init<IndividualShow>(show: IndividualShow) where IndividualShow : Show {
-        contents = .solo(show)
+        properties.contents = .solo(show)
         
     }
     
     public init() {
-        contents = .empty
         
     }
     
@@ -63,7 +69,7 @@ public extension AnyShowGroup.Contents {
             shows
             
         case .subgroups(let subgroups):
-            subgroups.flatMap(\.contents.shows)
+            subgroups.flatMap(\.properties.contents.shows)
             
         }
     }
@@ -75,7 +81,7 @@ public extension ShowGroup {
     
     subscript(keyPath: KeyPath<Contents, [AnyShow]>) -> [AnyShow] {
         guard let _self = self as? AnyShowGroup else { return [] }
-        return _self.contents[keyPath: keyPath]
+        return _self.properties.contents[keyPath: keyPath]
     }
     
 }
