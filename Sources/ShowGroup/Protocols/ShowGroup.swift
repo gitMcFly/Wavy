@@ -45,7 +45,7 @@ extension ShowGroup {
     subscript<V>(propertyKeyPath: KeyPath<Properties, V>) -> V {
         if self is AnyShowGroup {
             return _self.properties[keyPath: propertyKeyPath]
-        
+            
         } else {
             switch propertyKeyPath {
             case \Properties.contents.shows:
