@@ -11,8 +11,7 @@ public struct PRX: ShowGroup {
     public static let network = Network.prx
     
     public var showGroupBody: some ShowGroup {
-        "A Way With Words"
-            .url(authority: "waywordradio.org")
+        EmptyShowGroup()
         
     }
     

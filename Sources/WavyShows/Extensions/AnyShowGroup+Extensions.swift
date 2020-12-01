@@ -9,8 +9,12 @@ import ShowGroup
 
 public extension AnyShowGroup {
     @AnyShowGroupBuilder static var universal: AnyShowGroup {
+        // public radio
         NPR()
         PRX()
+        
+        //
+        Independent()
         
     }
     
