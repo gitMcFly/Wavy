@@ -107,11 +107,9 @@ extension Show {
     }
     
     public func subtitle(_ subtitle: String) -> some Show {
-        let joinedTitle = [self[\.title], subtitle]
-            .compactMap { $0 }
-            .joined(separator: " ")
-        
-        return self.title(joinedTitle)
+        var new = self
+        new[\.subtitle] = subtitle
+        return new
     }
     
 }

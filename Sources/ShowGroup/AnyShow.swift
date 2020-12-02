@@ -10,6 +10,8 @@ import StationGroup
 public struct AnyShow: Show, ExpressibleByStringLiteral {
     public struct Properties {
         public var title: String?
+        public var subtitle: String?
+        
         public var network: Network?
         public var siteReference: SiteReference?
         
@@ -19,6 +21,7 @@ public struct AnyShow: Show, ExpressibleByStringLiteral {
     
     public init<Other>(other: Other) where Other: Show {
         properties.title = other[\.title]
+        properties.subtitle = other[\.subtitle]
         properties.network = other[\.network]
         properties.siteReference = other[\.siteReference]
         
