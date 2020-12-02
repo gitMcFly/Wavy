@@ -58,6 +58,13 @@ extension Tennessee {
                 .url(authority: "640wxsm.com")
                 .owner(.cumulusMedia)
             
+            Station("wpwt", .am(870))
+            
+            Station("wjcw", .am(910))
+            
+            Station("wkpt", .am(1400))
+            
+                        
         }
         
     }

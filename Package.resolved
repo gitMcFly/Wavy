@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "MixedGroup",
-        "repositoryURL": "https://github.com/docmcgit/MixedGroup",
+        "repositoryURL": "https://github.com/gitMcFly/MixedGroup",
         "state": {
           "branch": null,
           "revision": "3234f28234bb569effcfb665ef19e5f1d2b65dd1",
