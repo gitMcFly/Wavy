@@ -29,7 +29,7 @@ public struct NPR: ShowGroup {
             .url("https://www.npr.org/programs/fresh-air/")
         
         "1A"
-            .url("https://the1a.org")
+            .url(authority: "the1a.org")
         
         "Here & Now"
             .url("https://www.wbur.org/hereandnow")
