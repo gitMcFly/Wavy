@@ -23,7 +23,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-algorithms", .upToNextMajor(from: "0.0.1")),
-        .package(url: "https://github.com/docMcFly/MixedGroup", .upToNextMajor(from: "0.0.1")),
+        .package(url: "https://github.com/gitMcFly/MixedGroup", .upToNextMajor(from: "0.0.1")),
         .package(url: "https://github.com/christopherweems/Resultto", .upToNextMajor(from: "0.0.1")),
         .package(url: "https://github.com/christopherweems/Statehood", .upToNextMajor(from: "0.0.1")),
         .package(url: "https://github.com/christopherweems/unstandard", .upToNextMajor(from: "0.0.6")),
