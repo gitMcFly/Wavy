@@ -17,8 +17,12 @@ let package = Package(
         .library(
             name: "Wavy",
             targets: ["StationGroup", "Wavy"]),
+        .library(
+            name: "WavyShows",
+            targets: ["ShowGroup", "WavyShows"]),
     ],
     dependencies: [
+        .package(url: "https://github.com/apple/swift-algorithms", .upToNextMajor(from: "0.0.1")),
         .package(url: "https://github.com/docmcgit/MixedGroup", .upToNextMajor(from: "0.0.1")),
         .package(url: "https://github.com/christopherweems/Resultto", .upToNextMajor(from: "0.0.1")),
         .package(url: "https://github.com/christopherweems/Statehood", .upToNextMajor(from: "0.0.1")),
@@ -27,6 +31,15 @@ let package = Package(
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
+        .target(
+            name: "ShowGroup",
+            dependencies: [
+                .product(name: "MixedGroup", package: "MixedGroup"),
+                .product(name: "Resultto", package: "Resultto"),
+                .product(name: "Statehood", package: "Statehood"),
+                .product(name: "unstandard", package: "unstandard"),
+                "StationGroup",
+            ]),
         .target(
             name: "StationGroup",
             dependencies: [
@@ -41,6 +54,17 @@ let package = Package(
                 "StationGroup",
                 .product(name: "unstandard", package: "unstandard"),
             ]),
+        .target(
+            name: "WavyShows",
+            dependencies: [
+                .product(name: "Algorithms", package: "swift-algorithms"),
+                "Wavy",
+                "ShowGroup",
+                .product(name: "unstandard", package: "unstandard"),
+            ]),
+        .testTarget(
+            name: "ShowGroupTests",
+            dependencies: ["ShowGroup", "WavyShows"]),
         .testTarget(
             name: "StationGroupTests",
             dependencies: ["StationGroup"]),
