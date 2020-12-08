@@ -28,7 +28,8 @@ extension Tennessee {
                 .url(authority: "whcbradio.com")
             
             Station("wrgs", .fm(94, 5))
-                .slogan("Your Information Network")
+                .slogan("Hometown Radio")
+                .broadcastCity("Rogersville")
                 .url(authority: "wrgsradio.com")
             
             Station("wopi", "ESPN Tri-Cities", .fm(98, 1))
@@ -37,9 +38,11 @@ extension Tennessee {
             
             Station("wrzk", .fm(95, 9), "The Hog")
                 .frequencyDesignator(.hidden)
+                .broadcastCity("Colonial Heights")
                 .url(authority: "wrzk.com")
             
             Station("wtfm", .fm(98, 5))
+                .broadcastCity("Kingsport")
                 .url(authority: "wtfm.com")
             
             Station("wvek", "Classic Hits", .fm(102, 7))
