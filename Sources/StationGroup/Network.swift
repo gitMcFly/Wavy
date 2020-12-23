@@ -24,7 +24,7 @@ public enum Network: CaseIterable, Hashable {
     case cbsNewsRadio
     case foxNews
     case npr
-    case prn // premier networks
+    case premiere // formerly preimiere radio networks
     case prx // public radio exchange
     case westwoodOne
     
