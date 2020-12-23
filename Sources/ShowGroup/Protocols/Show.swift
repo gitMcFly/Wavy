@@ -8,6 +8,8 @@
 import Foundation
 import StationGroup
 
+private let hostNameFormatter = ListFormatter()
+
 public protocol Show {
     
 }
@@ -113,13 +115,12 @@ extension Show {
         return new
     }
     
-}
-
-extension Show {
-    private static let hostNameFormatter = ListFormatter()
-    
     public func with(host hosts: String...) -> some Show {
-        let formattedHosts = Self.hostNameFormatter.string(from: hosts)
+        self.with(hosts: hosts)
+    }
+    
+    fileprivate func with(hosts: [String]) -> some Show {
+        let formattedHosts = hostNameFormatter.string(from: hosts) ?? hosts.first!
         
         var new = self
         new[\.subtitle] = "with \(formattedHosts)"
@@ -132,6 +133,11 @@ extension StringProtocol where Self == AnyShow.StringLiteralType {
     public func subtitle(_ subtitle: String) -> some Show {
         self.as(AnyShow.self)
             .subtitle(subtitle)
+    }
+    
+    public func with(host hosts: String...) -> some Show {
+        self.as(AnyShow.self)
+            .with(hosts: hosts)
     }
     
 }
