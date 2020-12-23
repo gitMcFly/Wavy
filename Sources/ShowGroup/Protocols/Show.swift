@@ -5,6 +5,7 @@
 //  Created by Christopher Weems on 11/30/20.
 //
 
+import Foundation
 import StationGroup
 
 public protocol Show {
@@ -109,6 +110,19 @@ extension Show {
     public func subtitle(_ subtitle: String) -> some Show {
         var new = self
         new[\.subtitle] = subtitle
+        return new
+    }
+    
+}
+
+extension Show {
+    private static let hostNameFormatter = ListFormatter()
+    
+    public func with(host hosts: String...) -> some Show {
+        let formattedHosts = Self.hostNameFormatter.string(from: hosts)
+        
+        var new = self
+        new[\.subtitle] = "with \(formattedHosts)"
         return new
     }
     
