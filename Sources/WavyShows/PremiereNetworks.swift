@@ -14,8 +14,10 @@ public struct PremiereNetworks: ShowGroup {
         "The Rush Limbaugh Show"
             .url(authority: "rushlimbaugh.com")
         
+        /*
         "Fox Gametime React"
             .with(host: "Andy Furman", "Lincoln Kennedy")
+        */
         
     }
 }
