@@ -54,6 +54,21 @@ extension Tennessee {
                 .slogan("Twenty-Four Carrot Country")
                 .url(authority: "969wxbq.com")
             
+            Station("wbgq", "Q", .fm(100, 7))
+                .frequencyDesignator(.hidden)
+                .broadcastCity("Bean Station")
+                .url(authority: "wbgqfm.com", useHTTPS: false)
+            
+            Station("wkos", .fm(104, 9), "Nash Icon")
+                .frequencyDesignator(.hidden)
+                .url(authority: "1049nashicon.com", useHTTPS: false)
+                .owner(.cumulusMedia)
+            
+            Station("wjdt", .fm(106, 5))
+                .frequencyDesignator(.leading)
+                .broadcastCity("Bean Station")
+                .url(authority: "wjdtfm.com", useHTTPS: false)
+            
             
             // am stations
             
