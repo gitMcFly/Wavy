@@ -12,6 +12,9 @@ struct Independent: ShowGroup {
         "A Way With Words"
             .url(authority: "waywordradio.org")
         
+        "Marketplace"
+            .url("https://www.marketplace.org/shows/marketplace/")
+        
     }
     
 }
