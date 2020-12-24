@@ -67,6 +67,6 @@ let package = Package(
             dependencies: ["ShowGroup", "WavyShows"]),
         .testTarget(
             name: "StationGroupTests",
-            dependencies: ["StationGroup"]),
+            dependencies: ["StationGroup", "Wavy"]),
     ]
 )
