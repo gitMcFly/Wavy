@@ -22,9 +22,6 @@ extension Tennessee {
                 .slogan("UT's College of Rock")
                 .url(authority: "wutkradio.com")
             
-            Station("wnml", "Sports Radio", .fm(91, 1))
-                .url(authority: "991thesportsanimal.com")
-            
             Station("wuot", .fm(91, 9))
                 .callLetters(.trailing)
                 .url(authority: "wuot.org")
@@ -61,6 +58,16 @@ extension Tennessee {
                 .frequencyDesignator(.hidden)
                 .url(authority: "newstalk987.com")
             
+            Station("wnml", "Sports Radio WNML", .fm(99, 1))
+                .frequencyDesignator(.leading)
+                .callLetters(.hidden)
+                .url(authority: "991thesportsanimal.com")
+                .owner(.cumulusMedia)
+            
+            Station("wnrx", .fm(99, 3), "The Lake")
+                .frequencyDesignator(.hidden)
+                .url(authority: "wnrxradio.com")
+            
             Station("wjbe", "Jammin'", .fm(99, 7))
                 .frequencyDesignator(.hidden)
                 .url(authority: "wjbe.org")
@@ -85,14 +92,14 @@ extension Tennessee {
                 .url(authority: "wimz.com")
                 .owner(.cumulusMedia)
             
+            Station("wozo", .fm(103, 9))
+                .url(authority: "wozoradio.com")
+            
             Station("wkht", "Hot", .fm(104, 5))
                 .frequencyDesignator(.hidden)
                 .slogan("The Beat of Knoxville")
                 .url(authority: "hot1045.net")
                 .owner(.summitMedia)
-            
-            Station("wozo", .fm(103, 9))
-                .url(authority: "wozoradio.com")
             
             Station("wtnq", "Q-", .fm(104, 9))
                 .frequencyDesignator(.hidden)
@@ -109,6 +116,12 @@ extension Tennessee {
                 .slogan("Knoxville Rocks")
                 .url(authority: "vlzrocks.com")
                 .owner(.loudMedia)
+            
+            Station("wfiv-fm", .fm(105, 3))
+                .frequencyDesignator(.hidden)
+                .callLetters(.trailing)
+                .slogan("Good Times. Great Oldies.")
+                .url(authority: "wfiv.com")
             
             Station("wfgw", .fm(106, 7), "The Light")
                 .frequencyDesignator(.hidden)
