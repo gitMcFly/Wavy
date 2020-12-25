@@ -173,7 +173,7 @@ public extension RadioStation {
         let endDateComponents = DateComponents(calendar: .gregorian,
                                                year: endDate.year,
                                                month: endDate.month,
-                                               day: endDate.day)
+                                               day: endDate.day + 1)
         
         if let date = endDateComponents.date, .now() < date {
             new.properties.title = new.properties.title.replacingText(with: title)
