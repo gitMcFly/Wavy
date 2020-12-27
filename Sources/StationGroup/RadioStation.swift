@@ -18,7 +18,7 @@ public struct RadioStation: Hashable {
         
         var slogan: String?
         
-        var market: Market?
+        var market: RadioMarket?
         
         var ignoreFrequencyInTitle = false
         var ignoreMarketInTitle = false
@@ -43,21 +43,21 @@ public struct RadioStation: Hashable {
     
     // MARK: - Initializers
     
-    public init(_ callLetters: String, _ titlePrefix: String, _ frequency: Frequency? = nil, market: Market? = nil) {
+    public init(_ callLetters: String, _ titlePrefix: String, _ frequency: Frequency? = nil, market: RadioMarket? = nil) {
         self.properties = Properties(title: .prefix(titlePrefix), callLetters: callLetters.uppercased())
         self.properties.frequency = frequency
         self.properties.market = market
         
     }
     
-    public init(_ callLetters: String, _ frequency: Frequency, _ titleSuffix: String, market: Market? = nil) {
+    public init(_ callLetters: String, _ frequency: Frequency, _ titleSuffix: String, market: RadioMarket? = nil) {
         self.properties = Properties(title: .suffix(titleSuffix), callLetters: callLetters.uppercased())
         self.properties.frequency = frequency
         self.properties.market = market
         
     }
     
-    public init(_ callLetters: String, _ frequency: Frequency? = nil, market: Market? = nil) {
+    public init(_ callLetters: String, _ frequency: Frequency? = nil, market: RadioMarket? = nil) {
         self.properties = Properties(title: .callLetters, callLetters: callLetters.uppercased())
         self.properties.frequency = frequency
         self.properties.market = market
@@ -89,7 +89,7 @@ public extension RadioStation {
     var owners: Set<Broadcaster> { properties.owners }
     var webURL: WebURL? { properties.webURL }
     var frequency: Frequency? { properties.frequency }
-    var market: Market? { properties.market }
+    var market: RadioMarket? { properties.market }
     
 }
 
@@ -146,7 +146,7 @@ public extension RadioStation {
         return new
     }
     
-    func market(_ market: Market) -> Self {
+    func market(_ market: RadioMarket) -> Self {
         var new = self
         new[\.market] = market
         return new

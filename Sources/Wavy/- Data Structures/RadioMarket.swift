@@ -5,12 +5,12 @@
 //  Created by Christopher Weems on 11/9/20.
 //
 
-@_exported import enum StationGroup.Market
+@_exported import enum StationGroup.RadioMarket
 import StationGroup
 import Foundation
 import unstandard
 
-extension Market: StationGroup {
+extension RadioMarket: StationGroup {
     public var stations: Set<RadioStation> {
         stationGroup.stations
             .map { $0.market(self) }
@@ -19,7 +19,7 @@ extension Market: StationGroup {
     
 }
 
-internal extension Market {
+internal extension RadioMarket {
     var stationGroup: StationGroup {
         switch self {
         case .annArbor:
