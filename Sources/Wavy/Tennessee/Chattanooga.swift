@@ -29,7 +29,7 @@ extension Tennessee {
                 .url(authority: "alive969.com")
             
             Station("wogt", "Nash Icon", .fm(107, 9))
-                .temporaryTitle("Christmas", through: (25, 12, 2020))
+//                .temporaryTitle("Christmas", through: (25, 12, 2020))
                 .frequencyDesignator(.hidden)
                 .broadcastCity("East Ridge")
                 .url(authority: "1079nashicon.com")
