@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/christopherweems/Resultto",
         "state": {
           "branch": null,
-          "revision": "33595e626d4cccdf61a375f0863803937e551c6f",
-          "version": "0.0.1"
+          "revision": "9e7a5213162260abc57a13df72b2b6177fe3f892",
+          "version": "0.0.2"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/christopherweems/Statehood",
         "state": {
           "branch": null,
-          "revision": "af652ddf62ddfab0d571f7b7dd658eecfc70d522",
-          "version": "0.0.1"
+          "revision": "4d63dca97d23daf7fb424c4e99a51678c461e5af",
+          "version": "0.0.2"
         }
       },
       {
@@ -47,12 +47,21 @@
         }
       },
       {
+        "package": "triple-q",
+        "repositoryURL": "https://github.com/christopherweems/triple-q.git",
+        "state": {
+          "branch": null,
+          "revision": "f58dac700310b3c240ba7ab69284444fef7b580a",
+          "version": "0.0.1"
+        }
+      },
+      {
         "package": "unstandard",
         "repositoryURL": "https://github.com/christopherweems/unstandard",
         "state": {
           "branch": null,
-          "revision": "b3acfdbb35ba86ad4b7024f6c0a62a3267e93208",
-          "version": "0.0.6"
+          "revision": "06ed976a4b5ed6066227cc9d0171474acd72819b",
+          "version": "0.0.9"
         }
       }
     ]
