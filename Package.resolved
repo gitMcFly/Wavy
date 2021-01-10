@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/christopherweems/Resultto",
         "state": {
           "branch": null,
-          "revision": "9e7a5213162260abc57a13df72b2b6177fe3f892",
-          "version": "0.0.2"
+          "revision": "d58a74b9cbbd837e9b6da8d7571bfe67b0645fbd",
+          "version": "0.0.3"
         }
       },
       {
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/christopherweems/unstandard",
         "state": {
           "branch": null,
-          "revision": "06ed976a4b5ed6066227cc9d0171474acd72819b",
-          "version": "0.0.9"
+          "revision": "867fd7b018af670c89a164522093369a72a77abb",
+          "version": "0.0.14"
         }
       }
     ]
