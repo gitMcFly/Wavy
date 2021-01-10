@@ -9,8 +9,6 @@ import Foundation
 import StationGroup
 import unstandard
 
-private let hostNameFormatter = ListFormatter()
-
 public protocol Show {
     
 }
@@ -121,7 +119,7 @@ extension Show {
     }
     
     fileprivate func with(hosts: [String]) -> some Show {
-        let formattedHosts = hostNameFormatter.string(from: hosts) ?? hosts.first!
+        let formattedHosts = _ListFormatter.localizedString(byJoining: hosts)
         
         var new = self
         new[\.subtitle] = "with \(formattedHosts)"
