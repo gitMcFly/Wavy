@@ -31,7 +31,7 @@ public struct AnyShowGroup: ShowGroup {
     }
     
     
-    // MARK: - Initializers
+    ///: Initializers
     
     public init<Subgroup>(subgroups: [Subgroup]) where Subgroup : ShowGroup {
         let contents = subgroups.map { $0[\.contents] }

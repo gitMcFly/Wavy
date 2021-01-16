@@ -41,7 +41,7 @@ public struct RadioStation: Hashable {
     internal var properties: Properties
     
     
-    // MARK: - Initializers
+    ///: Initializers
     
     public init(_ callLetters: String, _ titlePrefix: String, _ frequency: Frequency? = nil, market: RadioMarket? = nil) {
         self.properties = Properties(title: .prefix(titlePrefix), callLetters: callLetters.uppercased())
@@ -79,7 +79,7 @@ extension RadioStation {
 }
 
 
-// MARK: - Deprecated Property Accessors
+///: Deprecated Property Accessors
 
 @available(*, deprecated)
 public extension RadioStation {
@@ -94,7 +94,7 @@ public extension RadioStation {
 }
 
 
-// MARK: - Property Setters
+///: Property Setters
 
 public extension RadioStation {
     func title(_ title: String) -> Self {
@@ -353,7 +353,7 @@ extension RadioStation.Title {
 }
 
 
-// MARK: -
+///:
 
 public extension RadioStation.Properties {
     var subtitle: String? {

@@ -19,7 +19,7 @@ extension Show {
 }
 
 
-// MARK: - Accessing `Show` properties
+///: Accessing `Show` properties
 
 public extension Show {
     fileprivate var _self: AnyShow {
@@ -46,7 +46,7 @@ public extension Show {
 }
 
 
-// MARK: - Property Setters
+///: Property Setters
 
 extension Show {
     public func url(authority: String) -> some Show {
@@ -77,7 +77,7 @@ extension StringProtocol where Self == AnyShow.StringLiteralType {
 }
 
 
-// MARK: -
+///:
 
 
 extension Show {
@@ -99,7 +99,7 @@ extension StringProtocol where Self == AnyShow.StringLiteralType {
 }
 
 
-// MARK: -
+///:
 
 extension Show {
     public func title(_ title: String) -> some Show {
