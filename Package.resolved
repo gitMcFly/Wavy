@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/gitMcFly/MixedGroup.git",
         "state": {
           "branch": null,
-          "revision": "3234f28234bb569effcfb665ef19e5f1d2b65dd1",
-          "version": "0.0.1"
+          "revision": "05270a556e069d3e959337f41eda22c17dc88ef1",
+          "version": "0.0.2"
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/christopherweems/Resultto.git",
         "state": {
           "branch": null,
-          "revision": "d58a74b9cbbd837e9b6da8d7571bfe67b0645fbd",
-          "version": "0.0.3"
+          "revision": "c810a124d6dbfd678ad7df97c07cdd4dce8a1a21",
+          "version": "0.1.0"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/christopherweems/Statehood.git",
         "state": {
           "branch": null,
-          "revision": "f03f597dc929bf999b4a582bb0b48a126afcb8ba",
-          "version": "0.0.3"
+          "revision": "7513af6d0d6a565825251831175ab21012ca3b17",
+          "version": "0.0.4"
         }
       },
       {
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/christopherweems/unstandard.git",
         "state": {
           "branch": null,
-          "revision": "7864df0d4eadc2b09b23dd09a34b90166f3c1799",
-          "version": "0.0.21"
+          "revision": "afd979df97f91e40a9ff82c27abcf9dcef70732d",
+          "version": "0.1.0"
         }
       }
     ]

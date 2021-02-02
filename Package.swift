@@ -22,11 +22,11 @@ let package = Package(
             targets: ["ShowGroup", "WavyShows"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-algorithms.git", .upToNextMajor(from: "0.0.1")),
-        .package(url: "https://github.com/gitMcFly/MixedGroup.git", .upToNextMajor(from: "0.0.1")),
-        .package(url: "https://github.com/christopherweems/Resultto.git", .upToNextMajor(from: "0.0.3")),
-        .package(url: "https://github.com/christopherweems/Statehood.git", .upToNextMajor(from: "0.0.2")),
-        .package(url: "https://github.com/christopherweems/unstandard.git", .upToNextMajor(from: "0.0.21")),
+        .package(url: "https://github.com/apple/swift-algorithms.git", .upToNextMajor(from: "0.0.2")),
+        .package(url: "https://github.com/gitMcFly/MixedGroup.git", .upToNextMajor(from: "0.0.2")),
+        .package(url: "https://github.com/christopherweems/Resultto.git", .upToNextMajor(from: "0.1.0")),
+        .package(url: "https://github.com/christopherweems/Statehood.git", .upToNextMajor(from: "0.0.4")),
+        .package(url: "https://github.com/christopherweems/unstandard.git", .upToNextMajor(from: "0.1.0")),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
