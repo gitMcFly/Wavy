@@ -5,7 +5,9 @@
 //  Created by Christopher Weems on 11/30/20.
 //
 
+import Foundation
 import StationGroup
+import unstandard
 
 public protocol Show {
     
@@ -17,7 +19,7 @@ extension Show {
 }
 
 
-// MARK: - Accessing `Show` properties
+///: Accessing `Show` properties
 
 public extension Show {
     fileprivate var _self: AnyShow {
@@ -44,7 +46,7 @@ public extension Show {
 }
 
 
-// MARK: - Property Setters
+///: Property Setters
 
 extension Show {
     public func url(authority: String) -> some Show {
@@ -75,7 +77,7 @@ extension StringProtocol where Self == AnyShow.StringLiteralType {
 }
 
 
-// MARK: -
+///:
 
 
 extension Show {
@@ -97,7 +99,7 @@ extension StringProtocol where Self == AnyShow.StringLiteralType {
 }
 
 
-// MARK: -
+///:
 
 extension Show {
     public func title(_ title: String) -> some Show {
@@ -112,12 +114,29 @@ extension Show {
         return new
     }
     
+    public func with(host hosts: String...) -> some Show {
+        self.with(hosts: hosts)
+    }
+    
+    fileprivate func with(hosts: [String]) -> some Show {
+        let formattedHosts = _ListFormatter.localizedString(byJoining: hosts)
+        
+        var new = self
+        new[\.subtitle] = "with \(formattedHosts)"
+        return new
+    }
+    
 }
 
 extension StringProtocol where Self == AnyShow.StringLiteralType {
     public func subtitle(_ subtitle: String) -> some Show {
         self.as(AnyShow.self)
             .subtitle(subtitle)
+    }
+    
+    public func with(host hosts: String...) -> some Show {
+        self.as(AnyShow.self)
+            .with(hosts: hosts)
     }
     
 }

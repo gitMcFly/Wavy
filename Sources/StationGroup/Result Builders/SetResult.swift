@@ -7,7 +7,7 @@
 
 import Foundation
 
-@_functionBuilder
+@resultBuilder
 public struct SetResult {
     public static func buildBlock<E>() -> Set<E> {
         Set<E>()

@@ -18,7 +18,7 @@ public struct RadioStation: Hashable {
         
         var slogan: String?
         
-        var market: Market?
+        var market: RadioMarket?
         
         var ignoreFrequencyInTitle = false
         var ignoreMarketInTitle = false
@@ -41,23 +41,23 @@ public struct RadioStation: Hashable {
     internal var properties: Properties
     
     
-    // MARK: - Initializers
+    ///: Initializers
     
-    public init(_ callLetters: String, _ titlePrefix: String, _ frequency: Frequency? = nil, market: Market? = nil) {
+    public init(_ callLetters: String, _ titlePrefix: String, _ frequency: Frequency? = nil, market: RadioMarket? = nil) {
         self.properties = Properties(title: .prefix(titlePrefix), callLetters: callLetters.uppercased())
         self.properties.frequency = frequency
         self.properties.market = market
         
     }
     
-    public init(_ callLetters: String, _ frequency: Frequency, _ titleSuffix: String, market: Market? = nil) {
+    public init(_ callLetters: String, _ frequency: Frequency, _ titleSuffix: String, market: RadioMarket? = nil) {
         self.properties = Properties(title: .suffix(titleSuffix), callLetters: callLetters.uppercased())
         self.properties.frequency = frequency
         self.properties.market = market
         
     }
     
-    public init(_ callLetters: String, _ frequency: Frequency? = nil, market: Market? = nil) {
+    public init(_ callLetters: String, _ frequency: Frequency? = nil, market: RadioMarket? = nil) {
         self.properties = Properties(title: .callLetters, callLetters: callLetters.uppercased())
         self.properties.frequency = frequency
         self.properties.market = market
@@ -79,7 +79,7 @@ extension RadioStation {
 }
 
 
-// MARK: - Deprecated Property Accessors
+///: Deprecated Property Accessors
 
 @available(*, deprecated)
 public extension RadioStation {
@@ -89,12 +89,12 @@ public extension RadioStation {
     var owners: Set<Broadcaster> { properties.owners }
     var webURL: WebURL? { properties.webURL }
     var frequency: Frequency? { properties.frequency }
-    var market: Market? { properties.market }
+    var market: RadioMarket? { properties.market }
     
 }
 
 
-// MARK: - Property Setters
+///: Property Setters
 
 public extension RadioStation {
     func title(_ title: String) -> Self {
@@ -146,7 +146,7 @@ public extension RadioStation {
         return new
     }
     
-    func market(_ market: Market) -> Self {
+    func market(_ market: RadioMarket) -> Self {
         var new = self
         new[\.market] = market
         return new
@@ -173,7 +173,7 @@ public extension RadioStation {
         let endDateComponents = DateComponents(calendar: .gregorian,
                                                year: endDate.year,
                                                month: endDate.month,
-                                               day: endDate.day)
+                                               day: endDate.day + 1)
         
         if let date = endDateComponents.date, .now() < date {
             new.properties.title = new.properties.title.replacingText(with: title)
@@ -353,7 +353,7 @@ extension RadioStation.Title {
 }
 
 
-// MARK: -
+///:
 
 public extension RadioStation.Properties {
     var subtitle: String? {

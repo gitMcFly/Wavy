@@ -19,7 +19,7 @@ fileprivate extension Network {
 }
 
 
-// MARK: -
+///:
 
 fileprivate extension Network {
     static let showsByNetwork: [Network : AnyShowGroup] = {

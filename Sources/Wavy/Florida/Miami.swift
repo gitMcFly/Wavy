@@ -22,7 +22,7 @@ extension Florida {
             
             Station("wiod","Newsradio", .am(610))
                 .url(authority: "wiod.iheart.com")
-                .member(of: .prn, .abcNews, .bloomberg, .accuweather)
+                .member(of: .premiere, .abcNews, .bloomberg, .accuweather)
                 .owner(.iHeartMedia)
             
             Station("wwfe", "La Ponderosa", .am(670))

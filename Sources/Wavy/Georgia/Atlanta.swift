@@ -9,7 +9,7 @@ extension Georgia {
     struct Atlanta: _StationGroup {
         var stations: Set<Station> {
             
-            // MARK: - FM Stations
+            ///: FM Stations
             
             Station("wras", .fm(88, 5), "GPB")
                 .frequencyDesignator(.hidden)
@@ -64,7 +64,7 @@ extension Georgia {
                 .ignoreBroadcastCityInTitle()
             
             
-            // MARK: - AM Stations
+            ///: AM Stations
             
             Station("wbin", "Atlanta's BIN", .am(640))
                 .url(authority: "atlanta.binbews.com")

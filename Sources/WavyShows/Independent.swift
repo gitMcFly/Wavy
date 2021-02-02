@@ -12,6 +12,14 @@ struct Independent: ShowGroup {
         "A Way With Words"
             .url(authority: "waywordradio.org")
         
+        "Floydian Slip"
+            .subtitle("The Pink Floyd Experience")
+//            .host("Craig Bailey")
+            .url(authority: "floydianslip.com")
+        
+        "Marketplace"
+            .url("https://www.marketplace.org/shows/marketplace/")
+        
     }
     
 }

@@ -9,7 +9,7 @@ import Algorithms
 import Foundation
 import Statehood
 
-public enum Market: String, Hashable, CaseIterable {
+public enum RadioMarket: String, Hashable, CaseIterable {
     // alabama
     case birmingham
     case huntsville
@@ -54,7 +54,7 @@ public enum Market: String, Hashable, CaseIterable {
     
 }
 
-public extension Market {
+public extension RadioMarket {
     private var isHyphenatedCity: Bool {
         [.triCitiesTN].contains(self)
     }

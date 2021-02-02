@@ -12,7 +12,7 @@ public struct AnyStationGroup: StationGroup {
     
     @Memoized public var stations: Set<RadioStation>
     
-    public init(market: Market? = nil, @SetResult _ stations: @escaping () -> Set<RadioStation>) {
+    public init(market: RadioMarket? = nil, @SetResult _ stations: @escaping () -> Set<RadioStation>) {
         self._stations = Memoized {
             if let market = market {
                 return stations()

@@ -28,7 +28,8 @@ extension Tennessee {
                 .url(authority: "whcbradio.com")
             
             Station("wrgs", .fm(94, 5))
-                .slogan("Your Information Network")
+                .slogan("Hometown Radio")
+                .broadcastCity("Rogersville")
                 .url(authority: "wrgsradio.com")
             
             Station("wopi", "ESPN Tri-Cities", .fm(98, 1))
@@ -37,9 +38,11 @@ extension Tennessee {
             
             Station("wrzk", .fm(95, 9), "The Hog")
                 .frequencyDesignator(.hidden)
+                .broadcastCity("Colonial Heights")
                 .url(authority: "wrzk.com")
             
             Station("wtfm", .fm(98, 5))
+                .broadcastCity("Kingsport")
                 .url(authority: "wtfm.com")
             
             Station("wvek", "Classic Hits", .fm(102, 7))
@@ -50,6 +53,21 @@ extension Tennessee {
             Station("wxbq", .fm(96, 9))
                 .slogan("Twenty-Four Carrot Country")
                 .url(authority: "969wxbq.com")
+            
+            Station("wbgq", "Q", .fm(100, 7))
+                .frequencyDesignator(.hidden)
+                .broadcastCity("Bean Station")
+                .url(authority: "wbgqfm.com", useHTTPS: false)
+            
+            Station("wkos", .fm(104, 9), "Nash Icon")
+                .frequencyDesignator(.hidden)
+                .url(authority: "1049nashicon.com", useHTTPS: false)
+                .owner(.cumulusMedia)
+            
+            Station("wjdt", .fm(106, 5))
+                .frequencyDesignator(.leading)
+                .broadcastCity("Bean Station")
+                .url(authority: "wjdtfm.com", useHTTPS: false)
             
             
             // am stations

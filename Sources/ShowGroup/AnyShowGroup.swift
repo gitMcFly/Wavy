@@ -31,7 +31,7 @@ public struct AnyShowGroup: ShowGroup {
     }
     
     
-    // MARK: - Initializers
+    ///: Initializers
     
     public init<Subgroup>(subgroups: [Subgroup]) where Subgroup : ShowGroup {
         let contents = subgroups.map { $0[\.contents] }
@@ -46,6 +46,11 @@ public struct AnyShowGroup: ShowGroup {
     }
     
     public init<Subgroup>(other: Subgroup) where Subgroup : ShowGroup {
+        if let other = other as? AnyShowGroup {
+            self = other
+            return
+        }
+        
         properties.network = (other[\.network] ?? type(of: other).network).if { $0 != .unknown }
         properties.contents = other[\.shows]
             .map { .init(other: $0.network(properties.network)) }
