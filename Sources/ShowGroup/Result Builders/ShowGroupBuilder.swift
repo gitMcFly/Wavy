@@ -7,7 +7,7 @@
 
 import Foundation
 
-@_functionBuilder
+@resultBuilder
 public struct ShowGroupBuilder<Group> where Group : ShowGroup {
     public static func buildBlock<Subgroup: ShowGroup>(_ subgroups: Subgroup...) -> Group {
         .init(subgroups: subgroups)
